@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'embolic — Cambrils</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- BUNTING -->
+  <div class="bunting" aria-hidden="true">
+    <svg class="bunting-svg" viewBox="0 0 1600 90" preserveAspectRatio="none">
+      <line x1="0" y1="10" x2="1600" y2="10" stroke="#4a463f" stroke-width="2"/>
+    </svg>
+    <div class="flags"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <span class="brand">l'embolic</span>
+      <nav>
+        <a href="#carta">Carta</a>
+        <a href="#nosaltres">Qui som</a>
+        <a href="#info">Info &amp; horari</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="wrap hero-inner">
+      <svg class="neon-sign" viewBox="0 0 520 260" aria-label="L'embolic">
+        <text x="10" y="90" class="neon-text neon-flicker">l'emBolic</text>
+        <g class="neon-figure neon-flicker">
+          <path d="M120 120 C 140 130, 150 150, 145 175 C 140 200, 160 210, 180 205" fill="none" stroke-width="6"/>
+          <circle cx="118" cy="112" r="10" fill="none" stroke-width="6"/>
+          <path d="M100 105 Q118 90 138 100 L134 118 Q116 110 104 118 Z" />
+        </g>
+      </svg>
+      <p class="hero-tagline">el caos més divertit</p>
+      <p class="hero-sub">Cocteleria &amp; torrades a la Rambla de Cambrils. Sense pretensions, amb molta gràcia.</p>
+      <div class="hero-cta">
+        <a href="#carta" class="btn btn-primary">Veure la carta</a>
+        <a href="tel:+34649982250" class="btn btn-ghost">Trucar ara</a>
+      </div>
+    </div>
+    <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- QUI SOM -->
+  <section id="nosaltres" class="nosaltres">
+    <div class="wrap split">
+      <div class="split-text">
+        <p class="eyebrow">qui som</p>
+        <h2>Un embolic amb cara i ulls.</h2>
+        <p>A l'embolic no fem còctels: els vivim. L'Arnau ho dona tot darrere la barra per preparar-vos autèntiques bombes de sabor, amb un toc de caos que fa que tot sigui més divertit.</p>
+        <p>Torrades, vins, cava i una carta de còctels que va des dels clàssics fins a les nostres creacions pròpies — el Cocotro, el Sayulita, el Dry Basil.</p>
+      </div>
+      <div class="split-art">
+        <div class="scribble-card">
+          <span class="pin"></span>
+          <p class="hand">"El caos més divertit"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTA -->
+  <section id="carta" class="carta">
+    <div class="wrap">
+      <p class="eyebrow">a la carta</p>
+      <h2>Un tauler de plats i còctels, no una llista.</h2>
+
+      <div class="menu-group">
+        <h3 class="menu-group-title">Per picar</h3>
+        <div class="board board-sm">
+          <article class="card card-1">
+            <h4>Barqueta formatge i fuet</h4>
+            <span class="price">4,50 €</span>
+          </article>
+          <article class="card card-2">
+            <h4>Patates al forn amb salsa brava</h4>
+            <span class="price">7,70 €</span>
+          </article>
+          <article class="card card-3">
+            <h4>Steak Tartar</h4>
+            <span class="price">10,90 €</span>
+          </article>
+          <article class="card card-4">
+            <h4>Gilda (unitat)</h4>
+            <span class="price">2,90 €</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="menu-group">
+        <h3 class="menu-group-title">Torrades</h3>
+        <div class="board board-sm">
+          <article class="card card-5">
+            <h4>Torrada de fuet</h4>
+            <span class="price">9,00 €</span>
+          </article>
+          <article class="card card-6">
+            <h4>Torrada salmó, rúcula i olivada</h4>
+            <span class="price">12,00 €</span>
+          </article>
+          <article class="card card-1">
+            <h4>Torrada 3 formatges</h4>
+            <span class="price">12,00 €</span>
+          </article>
+          <article class="card card-2">
+            <h4>Torrada vegana</h4>
+            <span class="price">14,50 €</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="menu-group">
+        <h3 class="menu-group-title">Còctels</h3>
+        <div class="board">
+          <article class="card card-3">
+            <h4>Mojito Meduixa</h4>
+            <p>Vodka, suc de nabius, puré de maduixa, granadina</p>
+          </article>
+          <article class="card card-4">
+            <h4>Tiki</h4>
+            <p>Ron, puré de fruites del bosc, suc de llima, sucre</p>
+          </article>
+          <article class="card card-5">
+            <h4>Margarita</h4>
+            <p>Tequila, puré de mango, suc de llima, sucre</p>
+          </article>
+          <article class="card card-6">
+            <h4>Cocotro / Cocoloco</h4>
+            <p>Ron, suc de pinya, suc de taronja, sirope de coco, granadina</p>
+          </article>
+          <article class="card card-1">
+            <h4>Old Fashioned</h4>
+            <p>Un clàssic, sense embolics — o potser amb un petit toc.</p>
+          </article>
+          <article class="card card-2">
+            <h4>Dry Basil</h4>
+            <p>Ginebra infusionada amb alfàbrega, suc de llima, sucre, clara d'ou</p>
+          </article>
+        </div>
+      </div>
+
+      <p class="carta-note">+ assortiments, entrants, vins i cava. Demana la carta completa a taula.</p>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section id="info" class="info">
+    <div class="wrap">
+      <div class="info-hours">
+        <p class="eyebrow">quan obrim</p>
+        <h2>Horari</h2>
+        <div class="hours-card hours-card-wide">
+          <ul class="hours-list">
+            <li><span>Dilluns – Dijous</span><span>19:00–24:00</span></li>
+            <li><span>Divendres – Dissabte</span><span>19:00–01:00</span></li>
+            <li><span>Diumenge</span><span>Tancat</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-contact">
+        <p class="eyebrow">on som</p>
+        <h2>Rambla de Jaume I, 67</h2>
+        <p>43850 Cambrils, Tarragona</p>
+        <p class="contact-line">📞 <a href="tel:+34649982250">649 98 22 50</a></p>
+        <p class="contact-line">📷 <a href="https://instagram.com/emboliccambrils" target="_blank" rel="noopener">@emboliccambrils</a></p>
+        <a href="https://maps.google.com/?q=Rambla+de+Jaume+I+67+Cambrils" target="_blank" rel="noopener" class="btn btn-primary">Com arribar</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>l'embolic · Cambrils</span>
+      <span class="footer-note">pàgina de mostra — versió demo</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
