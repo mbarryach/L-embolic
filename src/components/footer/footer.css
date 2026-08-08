@@ -1,0 +1,64 @@
+@layer components {
+  .outro {
+    position: relative;
+    z-index: var(--z-content);
+    padding-block: var(--space-3xl) var(--space-l);
+    overflow: hidden;
+  }
+
+  /*
+    El nombre vuelve al final, esta vez macizo y recortado por abajo: se
+    hunde en el borde de la pagina mientras las particulas del canvas se
+    van juntando detras. Cierre, no "footer".
+  */
+  .outro__wordmark {
+    margin: 0 0 var(--space-2xl);
+    padding-inline: var(--grid-margin);
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 21vw, 20rem);
+    font-weight: 700;
+    line-height: 0.78;
+    letter-spacing: -0.035em;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--c-cream-30);
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .outro__meta {
+    align-items: baseline;
+    row-gap: var(--space-2xs);
+    padding-block-start: var(--space-m);
+    font-size: var(--fs-micro);
+    letter-spacing: 0.06em;
+    color: var(--c-cream-50);
+    border-block-start: 1px solid var(--line-hair);
+  }
+
+  .outro__place {
+    grid-column: 1 / span 4;
+  }
+
+  .outro__note {
+    grid-column: 6 / span 4;
+  }
+
+  .outro__top {
+    grid-column: 11 / span 2;
+    justify-self: end;
+  }
+
+  @media (max-width: 900px) {
+    .outro__place {
+      grid-column: 1 / span 7;
+    }
+
+    .outro__note {
+      grid-column: 1 / span 7;
+    }
+
+    .outro__top {
+      grid-column: 9 / span 4;
+    }
+  }
+}

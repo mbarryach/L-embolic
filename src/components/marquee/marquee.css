@@ -1,0 +1,56 @@
+@layer components {
+  /*
+    Franja que cruza la pagina torcida, entre el hero y "qui som". Sirve
+    de bisagra: no hay corte seco entre secciones, hay una cinta que pasa.
+  */
+  .marquee {
+    position: relative;
+    z-index: var(--z-content);
+    padding-block: var(--space-s);
+    margin-block: var(--space-xl);
+    overflow: hidden;
+    border-block: 1px solid var(--line-hair);
+    background: rgb(12 11 15 / 55%);
+    transform: rotate(-1.6deg) scaleX(1.06);
+  }
+
+  .marquee__track {
+    display: flex;
+    inline-size: max-content;
+    animation: marquee-run 34s linear infinite;
+  }
+
+  .marquee__group {
+    display: flex;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+    padding-inline-end: clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .marquee__item {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3.4vw, 2.6rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: var(--tracking-tight);
+    white-space: nowrap;
+    color: var(--c-cream);
+  }
+
+  .marquee__item--hollow {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--c-teal);
+  }
+
+  .marquee__dot {
+    inline-size: 7px;
+    block-size: 7px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--c-coral);
+  }
+
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+}

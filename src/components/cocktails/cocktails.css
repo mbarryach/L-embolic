@@ -1,0 +1,283 @@
+@layer components {
+  .carta {
+    position: relative;
+    z-index: var(--z-content);
+    padding-block: var(--space-3xl);
+  }
+
+  .carta__head {
+    row-gap: var(--space-m);
+    margin-block-end: var(--space-2xl);
+  }
+
+  .carta__mark {
+    grid-column: 7 / span 6;
+  }
+
+  /* Este titular arranca a media pagina en vez de pegado al margen: cada
+     seccion entra por un sitio distinto y esta toca que entre por aqui. */
+  .carta__title {
+    grid-column: 5 / span 8;
+  }
+
+  .carta__stage {
+    overflow: hidden;
+  }
+
+  .carta__rail {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    inline-size: max-content;
+    padding-inline: var(--grid-margin);
+    margin: 0;
+  }
+
+  /*
+    Cada plato es una lamina, no una tarjeta. Sin caja, sin sombra, sin
+    esquinas redondas: solo una linea de acento y mucho aire alrededor.
+  */
+  .plate {
+    --c-accent: var(--c-teal);
+
+    position: relative;
+    inline-size: clamp(15rem, 30vw, 23rem);
+    flex: none;
+    padding-block-start: var(--space-m);
+    border-block-start: 2px solid var(--c-accent);
+    transform: translate3d(0, var(--plate-lift, 0), 0) scale(var(--plate-scale, 1));
+    opacity: var(--plate-dim, 1);
+    transition:
+      opacity var(--dur-medium) var(--ease-standard),
+      transform var(--dur-medium) var(--ease-standard);
+  }
+
+  .plate[data-accent='coral'] {
+    --c-accent: var(--c-coral);
+  }
+
+  .plate[data-accent='mustard'] {
+    --c-accent: var(--c-mustard);
+  }
+
+  .plate[data-accent='sage'] {
+    --c-accent: var(--c-sage);
+  }
+
+  /*
+    Profundidad falsa: los platos no estan todos a la misma altura ni al
+    mismo tamaño. Los pares caen, los impares suben, y el que esta en el
+    centro se ilumina. Sale mucho mas barato que mover camaras de verdad.
+  */
+  .plate:nth-child(even) {
+    --plate-lift: clamp(2rem, 7vh, 5.5rem);
+  }
+
+  .plate:nth-child(3n) {
+    --plate-lift: clamp(1rem, 3vh, 2.5rem);
+  }
+
+  .plate:nth-child(4n) {
+    inline-size: clamp(16rem, 34vw, 26rem);
+  }
+
+  .plate[data-focus='false'] {
+    --plate-scale: 0.94;
+    --plate-dim: 0.42;
+  }
+
+  .plate[data-focus='true'] {
+    --plate-scale: 1;
+    --plate-dim: 1;
+  }
+
+  /*
+    El hueco de la imagen. Foto o dibujo, siempre 4:5, para que el rail
+    tenga un pulso constante aunque el contenido cambie.
+  */
+  .plate__shot,
+  .plate__sketch {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    margin: 0 0 var(--space-m);
+    overflow: hidden;
+  }
+
+  .plate__shot img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    /*
+      Las fotos ya vienen con el fondo oscuro, asi que en vez de dejarlas
+      como rectangulos pegados se les desvanecen los bordes y se funden
+      con la pagina. Adios al aspecto de "tarjeta con foto dentro".
+    */
+    mask-image: radial-gradient(104% 86% at 50% 42%, #000 34%, transparent 97%);
+    filter: saturate(0.88) brightness(0.82);
+    transform: scale(1.05);
+    transition:
+      transform 1.1s var(--ease-emphasis),
+      filter var(--dur-slow) var(--ease-standard);
+  }
+
+  /* Solo el coctel en foco se ve a plena luz. Los demas esperan su turno. */
+  .plate[data-focus='true'] .plate__shot img {
+    filter: saturate(1.02) brightness(1);
+    transform: scale(1);
+  }
+
+  /* Un lavado del color del coctel por la parte de abajo de la foto. */
+  .plate__shot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 48%, color-mix(in sRGB, var(--c-accent) 26%, transparent) 100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-slow) var(--ease-standard);
+  }
+
+  .plate[data-focus='true'] .plate__shot::after {
+    opacity: 1;
+  }
+
+  /* Hueco sin foto: el trazo, centrado y con un halo detras. */
+  .plate__sketch {
+    display: grid;
+    place-items: center;
+    background: radial-gradient(
+      60% 50% at 50% 50%,
+      color-mix(in sRGB, var(--c-accent) 9%, transparent),
+      transparent 70%
+    );
+  }
+
+  .plate__glyph {
+    inline-size: 46%;
+    block-size: auto;
+    fill: none;
+    stroke: var(--c-accent);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.34;
+    transition: opacity var(--dur-slow) var(--ease-standard);
+  }
+
+  .plate[data-focus='true'] .plate__glyph {
+    opacity: 0.62;
+  }
+
+  .plate__index {
+    margin: 0 0 var(--space-2xs);
+    font-family: var(--font-display);
+    font-size: var(--fs-micro);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--tracking-wide);
+    color: var(--c-accent);
+  }
+
+  .plate__name {
+    margin: 0 0 var(--space-xs);
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: var(--lh-snug);
+    letter-spacing: var(--tracking-tight);
+    color: var(--c-cream);
+  }
+
+  .plate__recipe {
+    max-inline-size: 26ch;
+    font-size: var(--fs-small);
+    color: var(--c-cream-70);
+  }
+
+  /* --- pie de seccion --- */
+  .carta__foot {
+    align-items: end;
+    margin-block-start: var(--space-2xl);
+    row-gap: var(--space-m);
+  }
+
+  .carta__note {
+    grid-column: 2 / span 7;
+    max-inline-size: 30ch;
+    color: var(--c-mustard);
+    transform: rotate(-1.4deg);
+  }
+
+  /* "Arrossega" solo tiene sentido donde de verdad se arrastra con el dedo.
+     En escritorio el rail lo mueve el scroll, asi que sobra. */
+  .carta__hint {
+    display: none;
+    grid-column: 11 / span 2;
+    justify-self: end;
+    margin: 0;
+    font-size: var(--fs-micro);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--c-cream-30);
+  }
+
+  @media (max-width: 900px) {
+    .carta__mark,
+    .carta__title,
+    .carta__note {
+      grid-column: 1 / -1;
+    }
+
+    .carta__hint {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+  }
+
+  /*
+    Movil y tablet: nada de pinear ni de secuestrar el scroll. Carrusel
+    nativo con snap, que es lo que el dedo ya sabe hacer.
+  */
+  @media (max-width: 1024px), (pointer: coarse) {
+    .carta__stage {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      /* Sin esto, el snap alinea la primera lamina con el borde del
+         contenedor y se merienda el margen: el "01" acaba cortado. */
+      scroll-padding-inline-start: var(--grid-margin);
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carta__stage::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carta__rail {
+      padding-inline-end: 30vw;
+    }
+
+    .plate {
+      scroll-snap-align: start;
+      inline-size: min(78vw, 20rem);
+    }
+
+    .plate:nth-child(4n) {
+      inline-size: min(78vw, 20rem);
+    }
+
+    .plate:nth-child(even),
+    .plate:nth-child(3n) {
+      --plate-lift: 0;
+    }
+
+    .plate[data-focus='false'] {
+      --plate-scale: 1;
+      --plate-dim: 0.6;
+    }
+
+    .carta__hint {
+      display: block;
+    }
+  }
+}

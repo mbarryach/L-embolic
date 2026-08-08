@@ -1,0 +1,179 @@
+<section class="carta" id="carta" data-scene="cocktails">
+  <div class="grid carta__head">
+    <p class="scene-mark carta__mark" data-reveal><span class="scene-mark__index">03</span> el tauler</p>
+    <h2 class="display carta__title">
+      <span class="display__mask"><span class="display__line">Un tauler de coctels,</span></span>
+      <span class="display__mask"><span class="display__line display__line--indent">no una llista.</span></span>
+    </h2>
+  </div>
+
+  <div class="carta__stage" data-rail>
+    <ol class="carta__rail" data-rail-track role="list">
+      <!-- Sin foto todavia: se queda el trazo ocupando el mismo hueco.
+           Cuando llegue la foto, se cambia el div por el <figure> y ya. -->
+      <li class="plate" data-accent="teal" data-cocktail="mojito-meduixa">
+        <div class="plate__sketch">
+          <svg class="plate__glyph" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <circle cx="50" cy="50" r="38" />
+            <circle cx="50" cy="50" r="30" />
+            <path d="M50 20v60M20 50h60M29 29l42 42M71 29L29 71" />
+          </svg>
+        </div>
+        <p class="plate__index" aria-hidden="true">01</p>
+        <h3 class="plate__name">Mojito Meduixa</h3>
+        <p class="plate__recipe">Vodka, suc de nabius, puré de maduixa, granadina</p>
+      </li>
+
+      <li class="plate plate--shot" data-accent="coral" data-cocktail="tiki">
+        <figure class="plate__shot">
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/tiki-420.avif   420w,
+                /src/assets/photos/tiki-700.avif   700w,
+                /src/assets/photos/tiki-1040.avif 1040w
+              "
+            />
+            <img
+              src="/src/assets/photos/tiki-700.webp"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/tiki-420.webp   420w,
+                /src/assets/photos/tiki-700.webp   700w,
+                /src/assets/photos/tiki-1040.webp 1040w
+              "
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              alt="Còctel Tiki servit en un got tallat amb forma de tòtem, amb móres, llima i menta"
+            />
+          </picture>
+        </figure>
+        <p class="plate__index" aria-hidden="true">02</p>
+        <h3 class="plate__name">Tiki</h3>
+        <p class="plate__recipe">Ron, puré de fruites del bosc, suc de llima, sucre</p>
+      </li>
+
+      <li class="plate" data-accent="mustard" data-cocktail="margarita">
+        <div class="plate__sketch">
+          <svg class="plate__glyph" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <path d="M18 24h64L50 66v22" />
+            <path d="M32 92h36" />
+            <path d="M26 34h48" />
+            <circle cx="76" cy="30" r="9" />
+          </svg>
+        </div>
+        <p class="plate__index" aria-hidden="true">03</p>
+        <h3 class="plate__name">Margarita</h3>
+        <p class="plate__recipe">Tequila, puré de mango, suc de llima, sucre</p>
+      </li>
+
+      <li class="plate plate--shot" data-accent="sage" data-cocktail="cocotro">
+        <figure class="plate__shot">
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/cocotro-420.avif   420w,
+                /src/assets/photos/cocotro-700.avif   700w,
+                /src/assets/photos/cocotro-1040.avif 1040w
+              "
+            />
+            <img
+              src="/src/assets/photos/cocotro-700.webp"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/cocotro-420.webp   420w,
+                /src/assets/photos/cocotro-700.webp   700w,
+                /src/assets/photos/cocotro-1040.webp 1040w
+              "
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              alt="Cocotro servit en copa huracà, amb un tall de pinya, coco i una cirera"
+            />
+          </picture>
+        </figure>
+        <p class="plate__index" aria-hidden="true">04</p>
+        <h3 class="plate__name">Cocotro / Cocoloco</h3>
+        <p class="plate__recipe">Ron, suc de pinya, suc de taronja, sirope de coco, granadina</p>
+      </li>
+
+      <li class="plate plate--shot" data-accent="coral" data-cocktail="old-fashioned">
+        <figure class="plate__shot">
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/old-fashioned-420.avif   420w,
+                /src/assets/photos/old-fashioned-700.avif   700w,
+                /src/assets/photos/old-fashioned-1040.avif 1040w
+              "
+            />
+            <img
+              src="/src/assets/photos/old-fashioned-700.webp"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/old-fashioned-420.webp   420w,
+                /src/assets/photos/old-fashioned-700.webp   700w,
+                /src/assets/photos/old-fashioned-1040.webp 1040w
+              "
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              alt="Old Fashioned en got baix, amb un glaçó gran i una pell de taronja"
+            />
+          </picture>
+        </figure>
+        <p class="plate__index" aria-hidden="true">05</p>
+        <h3 class="plate__name">Old Fashioned</h3>
+        <p class="plate__recipe">Un clàssic, sense embolics — o potser amb un petit toc.</p>
+      </li>
+
+      <li class="plate plate--shot" data-accent="teal" data-cocktail="dry-basil">
+        <figure class="plate__shot">
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/dry-basil-420.avif   420w,
+                /src/assets/photos/dry-basil-700.avif   700w,
+                /src/assets/photos/dry-basil-1040.avif 1040w
+              "
+            />
+            <img
+              src="/src/assets/photos/dry-basil-700.webp"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/dry-basil-420.webp   420w,
+                /src/assets/photos/dry-basil-700.webp   700w,
+                /src/assets/photos/dry-basil-1040.webp 1040w
+              "
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              alt="Dry Basil en copa coupe, amb escuma de clara d'ou i fulles d'alfàbrega"
+            />
+          </picture>
+        </figure>
+        <p class="plate__index" aria-hidden="true">06</p>
+        <h3 class="plate__name">Dry Basil</h3>
+        <p class="plate__recipe">Ginebra infusionada amb alfàbrega, suc de llima, sucre, clara d'ou</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="grid carta__foot">
+    <p class="carta__note hand" data-reveal>+ torrades, assortiments, vins i cava. Demana la carta completa a taula.</p>
+    <p class="carta__hint" aria-hidden="true">arrossega</p>
+  </div>
+</section>

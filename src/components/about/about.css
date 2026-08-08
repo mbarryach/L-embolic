@@ -1,0 +1,104 @@
+@layer components {
+  .about {
+    padding-block-end: calc(var(--space-3xl) + 4rem);
+  }
+
+  /*
+    Composicion propia: el titular sale por la izquierda del margen, los dos
+    parrafos no arrancan a la misma altura y la nota se cuela por encima de
+    la columna de texto. Si parece descuadrado es porque lo esta, a posta.
+  */
+  .about__grid {
+    row-gap: var(--space-l);
+  }
+
+  .about__mark {
+    grid-column: 1 / span 5;
+  }
+
+  .about__title {
+    grid-column: 1 / span 8;
+    margin-inline-start: clamp(-2.5rem, -2vw, 0rem);
+  }
+
+  .about__body {
+    grid-column: 2 / span 5;
+  }
+
+  .about__body--offset {
+    grid-column: 4 / span 5;
+    margin-block-start: var(--space-l);
+  }
+
+  /* --- nota clavada --- */
+  .note {
+    --note-drift: 0rem;
+
+    grid-column: 9 / span 4;
+    grid-row: 3 / span 2;
+    position: relative;
+    align-self: start;
+    padding: var(--space-l) var(--space-m) var(--space-m);
+    margin: 0;
+    background: var(--c-surface-2);
+    border: 1px solid var(--line-hair);
+    box-shadow: var(--shadow-lift);
+    transform: rotate(2.4deg) translateY(var(--note-drift, 0));
+  }
+
+  .note__pin {
+    position: absolute;
+    inset-block-start: -9px;
+    inset-inline-start: 50%;
+    inline-size: 15px;
+    block-size: 15px;
+    border-radius: 50%;
+    background: var(--c-coral);
+    box-shadow: 0 3px 7px rgb(0 0 0 / 45%);
+    transform: translateX(-50%);
+  }
+
+  .note__quote {
+    margin: 0;
+    text-align: center;
+    color: var(--c-teal);
+    text-shadow: 0 0 16px rgb(77 217 232 / 35%);
+  }
+
+  .note__quote::before {
+    content: '“';
+  }
+
+  .note__quote::after {
+    content: '”';
+  }
+
+  .note__caption {
+    margin-block-start: var(--space-s);
+    font-size: var(--fs-micro);
+    letter-spacing: 0.08em;
+    text-align: center;
+    color: var(--c-cream-50);
+  }
+
+  @media (max-width: 900px) {
+    .about__title {
+      grid-column: 1 / -1;
+      margin-inline-start: 0;
+    }
+
+    .about__body,
+    .about__body--offset {
+      grid-column: 1 / -1;
+      margin-block-start: 0;
+    }
+
+    .note {
+      grid-column: 1 / -1;
+      grid-row: auto;
+      justify-self: center;
+      max-inline-size: 22rem;
+      margin-block-start: var(--space-m);
+    }
+  }
+}

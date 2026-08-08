@@ -1,0 +1,84 @@
+@layer components {
+  /*
+    Ni barra de progreso ni "Loading 73%". Se dibuja una copa a trazo de
+    neon y se enciende un tubo debajo. Cuando la escena esta lista, todo
+    esto se levanta como un telon y no vuelve.
+  */
+  .loader {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-loader);
+    display: grid;
+    gap: var(--space-l);
+    place-content: center;
+    justify-items: center;
+    background: var(--c-void);
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 900ms var(--ease-emphasis);
+  }
+
+  html.no-js .loader,
+  .loader[hidden] {
+    display: none;
+  }
+
+  .loader[data-state='done'] {
+    clip-path: inset(0 0 100% 0);
+    pointer-events: none;
+  }
+
+  .loader__glass {
+    inline-size: clamp(64px, 12vw, 104px);
+    block-size: auto;
+    overflow: visible;
+  }
+
+  .loader__stroke {
+    fill: none;
+    stroke: var(--c-teal);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 6px rgb(77 217 232 / 70%));
+    stroke-dasharray: var(--dash, 240);
+    stroke-dashoffset: calc(var(--dash, 240) * (1 - var(--loader-progress, 0)));
+    transition: stroke-dashoffset 400ms var(--ease-standard);
+  }
+
+  .loader__stroke--liquid {
+    --dash: 60;
+
+    stroke: var(--c-mustard);
+    filter: drop-shadow(0 0 6px rgb(232 185 74 / 70%));
+  }
+
+  .loader__tube {
+    inline-size: clamp(120px, 26vw, 280px);
+    block-size: 2px;
+    background: var(--line-hair);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .loader__tube::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--c-teal);
+    box-shadow: 0 0 10px var(--c-teal);
+    transform: scaleX(var(--loader-progress, 0));
+    transform-origin: left center;
+    transition: transform 400ms var(--ease-standard);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loader {
+      transition-duration: 200ms;
+    }
+
+    .loader__stroke,
+    .loader__tube::after {
+      transition-duration: 100ms;
+    }
+  }
+}

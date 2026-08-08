@@ -1,143 +1,125 @@
-<!DOCTYPE html>
-<html lang="ca">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L'embolic — Cambrils</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <!-- BUNTING -->
-  <div class="bunting" aria-hidden="true">
-    <svg class="bunting-svg" viewBox="0 0 1600 90" preserveAspectRatio="none">
-      <line x1="0" y1="10" x2="1600" y2="10" stroke="#4a463f" stroke-width="2"/>
-    </svg>
-    <div class="flags"></div>
-  </div>
+    <title>L'embolic — Cocteleria a la Rambla de Cambrils</title>
+    <meta
+      name="description"
+      content="Cocteleria i torrades a la Rambla de Jaume I, Cambrils. Còctels clàssics i creacions pròpies, vins i cava. El caos més divertit."
+    />
+    <meta name="theme-color" content="#17171b" />
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <span class="brand">l'embolic</span>
-      <nav>
-        <a href="#carta">Carta</a>
-        <a href="#nosaltres">Qui som</a>
-        <a href="#info">Info &amp; horari</a>
-      </nav>
+    <!-- Cambia esto por el dominio real cuando el bar tenga uno propio. -->
+    <link rel="canonical" href="https://mbarryach.github.io/L-embolic/" />
+
+    <meta property="og:type" content="business.business" />
+    <meta property="og:locale" content="ca_ES" />
+    <meta property="og:site_name" content="L'embolic" />
+    <meta property="og:title" content="L'embolic — Cocteleria a la Rambla de Cambrils" />
+    <meta
+      property="og:description"
+      content="Còctels clàssics i creacions pròpies, torrades, vins i cava. El caos més divertit, a Cambrils."
+    />
+    <meta property="og:url" content="https://mbarryach.github.io/L-embolic/" />
+    <meta property="og:image" content="https://mbarryach.github.io/L-embolic/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Rètol de neó de L'embolic sobre fons fosc" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="L'embolic — Cocteleria a la Rambla de Cambrils" />
+    <meta
+      name="twitter:description"
+      content="Còctels clàssics i creacions pròpies, torrades, vins i cava. El caos més divertit, a Cambrils."
+    />
+    <meta name="twitter:image" content="https://mbarryach.github.io/L-embolic/og-image.png" />
+
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap"
+    />
+    <link rel="stylesheet" href="/src/styles/index.css" />
+
+    <script>
+      // Si esto corre, hay JS. Sirve para que el loader no se quede
+      // atrancado en pantalla cuando alguien navega sin scripts.
+      document.documentElement.classList.remove('no-js');
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BarOrCafe",
+        "name": "L'embolic",
+        "url": "https://mbarryach.github.io/L-embolic/",
+        "telephone": "+34649982250",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rambla de Jaume I, 67",
+          "postalCode": "43850",
+          "addressLocality": "Cambrils",
+          "addressRegion": "Tarragona",
+          "addressCountry": "ES"
+        },
+        "sameAs": ["https://instagram.com/emboliccambrils"],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "19:00",
+            "closes": "24:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Friday", "Saturday"],
+            "opens": "19:00",
+            "closes": "01:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "00:00",
+            "closes": "00:00"
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Salta al contingut</a>
+
+    <!-- @include src/components/loader/loader.html -->
+
+    <!-- El escenario 3D. Fijo, detras de todo, y con su plan B pintado en CSS. -->
+    <div class="stage" aria-hidden="true">
+      <div class="stage__fallback"></div>
+      <canvas class="stage__canvas" data-stage-canvas></canvas>
+      <div class="stage__scrim"></div>
     </div>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="wrap hero-inner">
-      <svg class="neon-sign" viewBox="0 0 520 260" aria-label="L'embolic">
-        <text x="10" y="90" class="neon-text neon-flicker">l'emBolic</text>
-        <g class="neon-figure neon-flicker">
-          <path d="M120 120 C 140 130, 150 150, 145 175 C 140 200, 160 210, 180 205" fill="none" stroke-width="6"/>
-          <circle cx="118" cy="112" r="10" fill="none" stroke-width="6"/>
-          <path d="M100 105 Q118 90 138 100 L134 118 Q116 110 104 118 Z" />
-        </g>
-      </svg>
-      <p class="hero-tagline">el caos més divertit</p>
-      <p class="hero-sub">Cocteleria &amp; torrades a la Rambla de Cambrils. Sense pretensions, amb molta gràcia.</p>
-      <div class="hero-cta">
-        <a href="#carta" class="btn btn-primary">Veure la carta</a>
-        <a href="tel:+34649982250" class="btn btn-ghost">Trucar ara</a>
-      </div>
-    </div>
-    <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
-  </section>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="progress" aria-hidden="true"></div>
 
-  <!-- QUI SOM -->
-  <section id="nosaltres" class="nosaltres">
-    <div class="wrap split">
-      <div class="split-text">
-        <p class="eyebrow">qui som</p>
-        <h2>Un embolic amb cara i ulls.</h2>
-        <p>A l'embolic no fem còctels: els vivim. L'Arnau ho dona tot darrere la barra per preparar-vos autèntiques bombes de sabor, amb un toc de caos que fa que tot sigui més divertit.</p>
-        <p>Torrades, vins, cava i una carta de còctels que va des dels clàssics fins a les nostres creacions pròpies — el Cocotro, el Sayulita, el Dry Basil.</p>
-      </div>
-      <div class="split-art">
-        <div class="scribble-card">
-          <span class="pin"></span>
-          <p class="hand">"El caos més divertit"</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- @include src/components/bunting/bunting.html -->
+    <!-- @include src/components/header/header.html -->
 
-  <!-- CARTA -->
-  <section id="carta" class="carta">
-    <div class="wrap">
-      <p class="eyebrow">a la carta</p>
-      <h2>Un tauler de coctels, no una llista.</h2>
-      <div class="board">
-        <article class="card card-1">
-          <h3>Mojito Meduixa</h3>
-          <p>Vodka, suc de nabius, puré de maduixa, granadina</p>
-        </article>
-        <article class="card card-2">
-          <h3>Tiki</h3>
-          <p>Ron, puré de fruites del bosc, suc de llima, sucre</p>
-        </article>
-        <article class="card card-3">
-          <h3>Margarita</h3>
-          <p>Tequila, puré de mango, suc de llima, sucre</p>
-        </article>
-        <article class="card card-4">
-          <h3>Cocotro / Cocoloco</h3>
-          <p>Ron, suc de pinya, suc de taronja, sirope de coco, granadina</p>
-        </article>
-        <article class="card card-5">
-          <h3>Old Fashioned</h3>
-          <p>Un clàssic, sense embolics — o potser amb un petit toc.</p>
-        </article>
-        <article class="card card-6">
-          <h3>Dry Basil</h3>
-          <p>Ginebra infusionada amb alfàbrega, suc de llima, sucre, clara d'ou</p>
-        </article>
-      </div>
-      <p class="carta-note">+ torrades, assortiments, vins i cava. Demana la carta completa a taula.</p>
-    </div>
-  </section>
+    <main id="main">
+      <!-- @include src/components/hero/hero.html -->
+      <!-- @include src/components/marquee/marquee.html -->
+      <!-- @include src/components/about/about.html -->
+      <!-- @include src/components/cocktails/cocktails.html -->
+      <!-- @include src/components/location/location.html -->
+    </main>
 
-  <!-- INFO -->
-  <section id="info" class="info">
-    <div class="wrap split split-reverse">
-      <div class="split-art">
-        <div class="hours-card">
-          <h3>Horari</h3>
-          <ul class="hours-list">
-            <li><span>Dilluns – Dijous</span><span>19:00–24:00</span></li>
-            <li><span>Divendres – Dissabte</span><span>19:00–01:00</span></li>
-            <li><span>Diumenge</span><span>Tancat</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="split-text">
-        <p class="eyebrow">on som</p>
-        <h2>Rambla de Jaume I, 67</h2>
-        <p>43850 Cambrils, Tarragona</p>
-        <p class="contact-line">📞 <a href="tel:+34649982250">649 98 22 50</a></p>
-        <p class="contact-line">📷 <a href="https://instagram.com/emboliccambrils" target="_blank" rel="noopener">@emboliccambrils</a></p>
-        <a href="https://maps.google.com/?q=Rambla+de+Jaume+I+67+Cambrils" target="_blank" rel="noopener" class="btn btn-primary">Com arribar</a>
-      </div>
-    </div>
-  </section>
+    <!-- @include src/components/footer/footer.html -->
 
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <span>l'embolic · Cambrils</span>
-      <span class="footer-note">pàgina de mostra — versió demo</span>
-    </div>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="script.js"></script>
-</body>
+    <script type="module" src="/src/scripts/main.ts"></script>
+  </body>
 </html>

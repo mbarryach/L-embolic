@@ -1,0 +1,196 @@
+@layer components {
+  /*
+    Arranca casi invisible y sin fondo. Al bajar se encoge, aparece una
+    linea fina y el logotipo se recorta a "l'e". Nada de pastilla flotando
+    en medio, que ya la lleva medio internet.
+  */
+  .masthead {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: var(--z-header);
+    padding-block-start: 44px;
+    transition: padding-block-start var(--dur-medium) var(--ease-standard);
+  }
+
+  .masthead__bar {
+    display: flex;
+    gap: var(--space-m);
+    align-items: center;
+    padding-inline: var(--grid-margin);
+    padding-block: var(--space-m);
+    border-block-end: 1px solid transparent;
+    transition:
+      padding-block var(--dur-medium) var(--ease-standard),
+      background-color var(--dur-medium) var(--ease-standard),
+      border-color var(--dur-medium) var(--ease-standard);
+  }
+
+  .masthead[data-condensed='true'] {
+    padding-block-start: 0;
+  }
+
+  .masthead[data-condensed='true'] .masthead__bar {
+    padding-block: 0.6rem;
+    background: rgb(12 11 15 / 72%);
+    border-block-end-color: var(--line-hair);
+    backdrop-filter: blur(10px);
+  }
+
+  .masthead__brand {
+    position: relative;
+    display: grid;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .masthead__brand-full,
+  .masthead__brand-short {
+    grid-area: 1 / 1;
+    transition:
+      opacity var(--dur-medium) var(--ease-standard),
+      transform var(--dur-medium) var(--ease-standard);
+  }
+
+  .masthead__brand-short {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  .masthead[data-condensed='true'] .masthead__brand-full {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  .masthead[data-condensed='true'] .masthead__brand-short {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .masthead__nav {
+    display: flex;
+    gap: clamp(1rem, 2.5vw, 2.25rem);
+    margin-inline-start: auto;
+  }
+
+  .masthead__link {
+    font-size: var(--fs-small);
+    color: var(--c-cream-70);
+  }
+
+  .masthead__phone {
+    font-size: var(--fs-small);
+    font-variant-numeric: tabular-nums;
+    color: var(--c-cream-70);
+  }
+
+  /* --- boton de menu (solo movil/tablet) --- */
+  .masthead__toggle {
+    display: none;
+    gap: var(--space-2xs);
+    align-items: center;
+    min-block-size: 44px;
+    padding: 0 0.25rem;
+    margin-inline-start: auto;
+    background: none;
+    border: 0;
+    font-size: var(--fs-small);
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+    cursor: pointer;
+  }
+
+  .masthead__toggle-bars {
+    display: grid;
+    gap: 5px;
+    inline-size: 22px;
+  }
+
+  .masthead__toggle-bars i {
+    display: block;
+    block-size: 1px;
+    background: currentColor;
+    transition: transform var(--dur-medium) var(--ease-emphasis);
+  }
+
+  .masthead__toggle[aria-expanded='true'] .masthead__toggle-bars i:first-child {
+    transform: translateY(3px) rotate(10deg);
+  }
+
+  .masthead__toggle[aria-expanded='true'] .masthead__toggle-bars i:last-child {
+    transform: translateY(-3px) rotate(-10deg);
+  }
+
+  /* --- panel desplegable --- */
+  .menu {
+    display: grid;
+    gap: var(--space-xl);
+    align-content: center;
+    min-block-size: var(--vh);
+    padding: var(--space-2xl) var(--grid-margin);
+    background: var(--c-void);
+  }
+
+  .menu[hidden] {
+    display: none;
+  }
+
+  .menu__nav {
+    display: grid;
+    gap: var(--space-s);
+  }
+
+  .menu__link {
+    display: flex;
+    gap: var(--space-s);
+    align-items: baseline;
+    padding-block: var(--space-2xs);
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 11vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    color: var(--c-cream);
+    transition: color var(--dur-fast) var(--ease-standard);
+  }
+
+  .menu__link:hover,
+  .menu__link:focus-visible {
+    color: var(--c-teal);
+  }
+
+  .menu__index {
+    font-family: var(--font-body);
+    font-size: var(--fs-micro);
+    letter-spacing: var(--tracking-wide);
+    color: var(--c-cream-50);
+  }
+
+  .menu__foot {
+    display: grid;
+    gap: var(--space-2xs);
+    justify-items: start;
+    font-size: var(--fs-small);
+  }
+
+  @media (max-width: 780px) {
+    .masthead__nav,
+    .masthead__phone {
+      display: none;
+    }
+
+    .masthead__toggle {
+      display: inline-flex;
+    }
+
+    .masthead[data-menu-open='true'] {
+      block-size: var(--vh);
+      overflow-y: auto;
+      background: var(--c-void);
+    }
+  }
+}
