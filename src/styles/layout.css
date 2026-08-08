@@ -1,0 +1,61 @@
+@layer layout {
+  /*
+    Rejilla editorial de 12 columnas. Ninguna seccion usa el mismo tramo
+    que la anterior — esa es toda la gracia del asunto.
+  */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    padding-inline: var(--grid-margin);
+  }
+
+  .section {
+    position: relative;
+    z-index: var(--z-content);
+    padding-block: var(--space-3xl);
+  }
+
+  /* Franja a sangre: se salta los margenes de la rejilla. */
+  .bleed {
+    grid-column: 1 / -1;
+    margin-inline: calc(var(--grid-margin) * -1);
+  }
+
+  .rule {
+    grid-column: 1 / -1;
+    block-size: 1px;
+    border: 0;
+    background: var(--line-hair);
+  }
+
+  /* Tramos de columna que usan las secciones. Cada una tira del suyo. */
+  .col-full {
+    grid-column: 1 / -1;
+  }
+
+  .col-lead {
+    grid-column: 1 / span 7;
+  }
+
+  .col-aside {
+    grid-column: 9 / span 4;
+  }
+
+  .col-inset {
+    grid-column: 3 / span 6;
+  }
+
+  .col-wide {
+    grid-column: 2 / span 9;
+  }
+
+  @media (max-width: 900px) {
+    .col-lead,
+    .col-aside,
+    .col-inset,
+    .col-wide {
+      grid-column: 1 / -1;
+    }
+  }
+}

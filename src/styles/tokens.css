@@ -1,0 +1,103 @@
+@layer tokens {
+  /*
+    Paleta heredada del sitio original. No se toca el alma: nit tancada,
+    neons, crema i tres acents. Lo unico que hemos hecho es darle mas rango
+    (un negro mas profundo para la profundidad y las nieblas del canvas).
+  */
+  :root {
+    /* --- superficies --- */
+    --c-void: #0c0b0f;
+    --c-night: #17171b;
+    --c-surface-2: #2a2731;
+
+    /* --- tinta --- */
+    --c-cream: #f2e9dc;
+    --c-cream-70: rgb(242 233 220 / 70%);
+    --c-cream-50: rgb(242 233 220 / 50%);
+    --c-cream-30: rgb(242 233 220 / 30%);
+
+    /* --- acentos --- */
+    --c-teal: #4dd9e8;
+    --c-coral: #ff6e6b;
+    --c-mustard: #e8b94a;
+    --c-sage: #8fbf9f;
+
+    /* Acento "activo": lo reescribe JS segun el coctel en foco.
+       Todo lo que brilla lee de aqui, asi la seccion entera cambia de humor. */
+    --c-accent: var(--c-teal);
+
+    /* --- lineas --- */
+    --line-hair: rgb(242 233 220 / 12%);
+    --line-soft: rgb(242 233 220 / 20%);
+
+    /* --- tipografia --- */
+    --font-display: 'Fredoka', system-ui, sans-serif;
+    --font-hand: 'Caveat', ui-rounded, cursive;
+    --font-body: 'Work Sans', system-ui, sans-serif;
+
+    /* Escala fluida. El titular gigante puede comerse media pantalla,
+       que para eso es el titular gigante. */
+    --fs-micro: 0.75rem;
+    --fs-small: clamp(0.813rem, 0.78rem + 0.16vw, 0.906rem);
+    --fs-body: clamp(0.938rem, 0.9rem + 0.2vw, 1.063rem);
+    --fs-lead: clamp(1.063rem, 0.98rem + 0.42vw, 1.313rem);
+    --fs-h3: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
+    --fs-h2: clamp(2rem, 1.3rem + 3.4vw, 4.5rem);
+    --fs-h1: clamp(3rem, 1rem + 9.5vw, 10rem);
+    --fs-hand: clamp(1.5rem, 1.15rem + 1.7vw, 2.75rem);
+
+    --lh-tight: 0.92;
+    --lh-snug: 1.12;
+    --lh-body: 1.6;
+    --tracking-wide: 0.18em;
+    --tracking-tight: -0.02em;
+
+    /* --- ritmo --- */
+    --space-2xs: 0.5rem;
+    --space-xs: 0.75rem;
+    --space-s: 1rem;
+    --space-m: 1.5rem;
+    --space-l: 2.5rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+    --space-3xl: clamp(6rem, 12vh, 11rem);
+
+    /* --- rejilla editorial --- */
+    --grid-cols: 12;
+    --grid-gutter: clamp(0.75rem, 1.6vw, 1.75rem);
+    --grid-margin: clamp(1.25rem, 5vw, 5.5rem);
+    --measure: 62ch;
+
+    /* --- formas (pocas: aqui casi nada tiene esquinas redondas) --- */
+    --radius-hair: 2px;
+    --radius-pill: 999px;
+
+    /* --- capas --- */
+    --z-canvas: 0;
+    --z-content: 1;
+    --z-grain: 5;
+    --z-header: 20;
+    --z-loader: 90;
+
+    /* --- movimiento --- */
+    --dur-fast: 180ms;
+    --dur-medium: 420ms;
+    --dur-slow: 900ms;
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* --- sombras (pocas, y siempre duras: esto es un bar, no un dashboard) --- */
+    --shadow-lift: 0 18px 40px rgb(0 0 0 / 45%);
+    --glow-accent: 0 0 12px color-mix(in sRGB, var(--c-accent) 55%, transparent);
+
+    /* Altura real del viewport. La pisa JS en moviles donde 100vh miente. */
+    --vh: 100vh;
+  }
+
+  /* Fallback cuando el navegador si soporta unidades dinamicas. */
+  @supports (height: 100svh) {
+    :root {
+      --vh: 100svh;
+    }
+  }
+}

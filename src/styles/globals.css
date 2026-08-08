@@ -1,0 +1,131 @@
+@layer base {
+  body {
+    position: relative;
+    overflow-x: hidden;
+    background: var(--c-night);
+    color: var(--c-cream);
+  }
+
+  ::selection {
+    background: var(--c-accent);
+    color: var(--c-void);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-hair);
+  }
+
+  /* Saltar al contenido. Invisible hasta que alguien la enfoca con el teclado. */
+  .skip-link {
+    position: absolute;
+    inset-block-start: var(--space-s);
+    inset-inline-start: var(--space-s);
+    z-index: calc(var(--z-loader) + 1);
+    padding: var(--space-2xs) var(--space-s);
+    background: var(--c-accent);
+    color: var(--c-void);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    transform: translateY(-200%);
+    transition: transform var(--dur-fast) var(--ease-standard);
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+
+  /*
+    El canvas vive detras de todo y no se mueve nunca. La pagina scrollea
+    por encima; lo que se mueve es la camara. Asi da la sensacion de un
+    unico plano secuencia en vez de trocitos sueltos.
+  */
+  .stage {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-canvas);
+    pointer-events: none;
+    contain: strict;
+  }
+
+  .stage__canvas {
+    inline-size: 100%;
+    block-size: 100%;
+    opacity: 0;
+    transition: opacity 700ms var(--ease-standard);
+  }
+
+  [data-webgl='on'] .stage__canvas {
+    opacity: 1;
+  }
+
+  /*
+    Plan B pintado con CSS. Si WebGL no arranca (o el movil dice que no),
+    esto sigue siendo un bar de noche y no una pantalla negra triste.
+  */
+  .stage__fallback {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(60% 45% at 50% 25%, rgb(77 217 232 / 12%), transparent 70%),
+      radial-gradient(45% 40% at 78% 68%, rgb(255 110 107 / 10%), transparent 72%),
+      radial-gradient(40% 35% at 18% 78%, rgb(232 185 74 / 8%), transparent 70%),
+      repeating-linear-gradient(0deg, #1b1a1f 0, #1b1a1f 40px, #19181d 41px, #19181d 80px), var(--c-night);
+  }
+
+  [data-webgl='on'] .stage__fallback {
+    opacity: 0;
+    transition: opacity 700ms var(--ease-standard);
+  }
+
+  /*
+    Velo. En el hero la escena va a plena potencia porque ahi ES el
+    contenido; a partir de que empieza a haber texto que leer, se va
+    apagando sola. La escena esta para acompañar, no para competir con la
+    carta. Se controla con el progreso de scroll, sin tocar JS.
+  */
+  .stage__scrim {
+    position: absolute;
+    inset: 0;
+    background: var(--c-void);
+    opacity: calc(var(--scroll-progress, 0) * 0.42);
+    pointer-events: none;
+  }
+
+  /*
+    Grano de pelicula. Un SVG de ruido estirado por encima de todo.
+    Es lo que quita el brillo de "recien salido del navegador".
+  */
+  .grain {
+    position: fixed;
+    inset: -50%;
+    z-index: var(--z-grain);
+    pointer-events: none;
+    opacity: 0.32;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    will-change: transform;
+    animation: grain-drift 6s steps(6) infinite;
+  }
+
+  /* Barra de progreso finisima arriba del todo. Es la unica "UI" que hay. */
+  .progress {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: calc(var(--z-header) + 1);
+    block-size: 2px;
+    pointer-events: none;
+    background: var(--c-accent);
+    transform: scaleX(var(--scroll-progress, 0));
+    transform-origin: left center;
+    box-shadow: var(--glow-accent);
+  }
+
+  main {
+    position: relative;
+    z-index: var(--z-content);
+  }
+}

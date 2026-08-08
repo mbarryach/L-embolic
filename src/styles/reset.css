@@ -1,0 +1,75 @@
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  html {
+    text-size-adjust: 100%;
+    tab-size: 4;
+    /*
+      `clip` y no `hidden`: hidden convertiria el html en un contenedor de
+      scroll y se cargaria los position:sticky de dentro. Hace falta porque
+      la cinta del marquee va girada y se sale unos pixeles por los lados.
+    */
+    overflow-x: clip;
+  }
+
+  body {
+    min-height: 100%;
+    line-height: var(--lh-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img,
+  picture,
+  svg,
+  video,
+  canvas {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    overflow-wrap: break-word;
+  }
+
+  ul[class],
+  ol[class] {
+    list-style: none;
+    padding: 0;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  /* El scroll suave nativo solo entra si Lenis no esta al mando; si no,
+     los dos empujan a la vez y la pagina parece un ascensor roto. */
+  html:not([data-lenis='on']) {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

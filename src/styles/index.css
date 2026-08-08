@@ -1,0 +1,25 @@
+/*
+  Orden de capas. Lo de abajo siempre puede pisar a lo de arriba, asi no
+  hace falta pelearse con la especificidad ni tirar de !important.
+*/
+@layer reset, tokens, base, layout, components, utilities, overrides;
+
+@import url('./reset.css');
+@import url('./tokens.css');
+@import url('./typography.css');
+@import url('./globals.css');
+@import url('./animations.css');
+@import url('./layout.css');
+@import url('./utilities.css');
+
+/* componentes */
+@import url('../components/ui/ui.css');
+@import url('../components/loader/loader.css');
+@import url('../components/bunting/bunting.css');
+@import url('../components/header/header.css');
+@import url('../components/hero/hero.css');
+@import url('../components/marquee/marquee.css');
+@import url('../components/about/about.css');
+@import url('../components/cocktails/cocktails.css');
+@import url('../components/location/location.css');
+@import url('../components/footer/footer.css');
