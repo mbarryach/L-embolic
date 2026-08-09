@@ -234,7 +234,7 @@ No es "apagar las animaciones". Es otra experiencia:
 `title`, `description`, `canonical`, OpenGraph, Twitter Card y JSON-LD de tipo `BarOrCafe`
 con la dirección, el teléfono y el horario reales del negocio. No hay datos inventados.
 
-> Antes de publicar, cambia `https://mbarryach.github.io/L-embolic/` por el dominio definitivo
+> Desplegada en `https://lembolic.vercel.app/`. Si el bar acaba teniendo dominio propio, cámbialo
 > en el `canonical`, las metaetiquetas OpenGraph y el JSON-LD de `index.html`.
 
 ---

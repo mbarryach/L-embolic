@@ -112,8 +112,16 @@
       flex-direction: column;
     }
 
+    /*
+      Al pasar a columna, el eje principal es el vertical y el flex-basis
+      de arriba dejaria de ser un ancho para convertirse en una ALTURA de
+      14 rem: el boton se volvia un ladrillo blanco de 224 px. En columna
+      cada boton mide lo que ocupa su texto y se estira a lo ancho.
+    */
+    .age-gate__yes,
     .age-gate__no {
-      flex: 1 1 auto;
+      flex: 0 0 auto;
+      inline-size: 100%;
     }
   }
 }
