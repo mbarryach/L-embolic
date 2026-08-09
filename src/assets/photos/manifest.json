@@ -1,4 +1,15 @@
 {
-  "widths": [420, 700, 1040],
-  "photos": ["cocotro", "dry-basil", "old-fashioned", "tiki"]
+  "widths": [
+    420,
+    700,
+    1040
+  ],
+  "photos": [
+    "cocotro",
+    "dry-basil",
+    "margarita",
+    "mojito-meduixa",
+    "old-fashioned",
+    "tiki"
+  ]
 }

@@ -72,8 +72,8 @@ Reglas que se siguen en todo el código del bucle:
   instancia que se reutilizan (ver `Ice`, `Garnish`, `Bottles`, `Camera`).
 - `Particles.write()` no toca el buffer si el valor de agrupación no ha cambiado de verdad.
   Mover 320 puntos cuando nadie ha tocado el scroll es trabajo tirado.
-- El foco de la carta se calcula con posiciones cacheadas en `offsetLeft`, medidas una sola vez
-  por refresh, nunca dentro del scroll.
+- El foco de la carta se obtiene de seis tramos discretos del progreso de `ScrollTrigger`; no
+  hay mediciones de layout dentro del callback de scroll.
 - La interpolación usa `damp()` (exponencial con delta), no `lerp()` con alfa fija. Con lerp
   fijo, a 144 Hz todo va al triple de velocidad que a 60 y no te enteras hasta que alguien lo
   prueba en un portátil gaming.

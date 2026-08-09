@@ -44,12 +44,43 @@ export function createAboutTimeline({ motion }: TimelineContext): SectionTimelin
       scrollTrigger: { trigger: '.about__body--offset', start: 'top 72%', once: true },
     });
 
+    gsap.fromTo(
+      '.about__body:not(.about__body--offset)',
+      { xPercent: -8 },
+      {
+        xPercent: 5,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.1,
+        },
+      },
+    );
+
+    gsap.fromTo(
+      '.about__body--offset',
+      { xPercent: 7 },
+      {
+        xPercent: -4,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.1,
+        },
+      },
+    );
+
     // Deriva de la nota. Poquito: 60 px en toda la seccion.
     gsap.fromTo(
       '.note',
       { '--note-drift': '3rem' },
       {
         '--note-drift': '-1.5rem',
+        rotate: -1.6,
         ease: 'none',
         scrollTrigger: {
           trigger: section,

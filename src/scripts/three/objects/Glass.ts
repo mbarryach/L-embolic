@@ -51,8 +51,8 @@ export class Glass {
     // se enciende la silueta. Con valores mas suaves el cristal se rellena
     // entero y deja de parecer cristal para parecer plastico pintado.
     const glassMaterial = createNeonMaterial({
-      color: '#6fdcea',
-      rim: '#4dd9e8',
+      color: '#85d3cf',
+      rim: '#76c8c4',
       opacity: 0.01,
       rimPower: 6.5,
       glow: 0.62,

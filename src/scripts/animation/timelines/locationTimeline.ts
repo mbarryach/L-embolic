@@ -41,6 +41,19 @@ export function createLocationTimeline({ motion }: TimelineContext): SectionTime
       },
     );
 
+    gsap.fromTo(
+      '.info__contact li, .info__go',
+      { autoAlpha: 0, y: 20 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: DURATION.medium,
+        ease: EASE.emphasis,
+        stagger: STAGGER.loose,
+        scrollTrigger: { trigger: '.info__contact', start: 'top 86%', once: true },
+      },
+    );
+
     // Deriva lenta del bloque grande. Muy poca: si se pasa, marea al leer.
     gsap.to('.info__address', {
       yPercent: -9,
@@ -50,6 +63,17 @@ export function createLocationTimeline({ motion }: TimelineContext): SectionTime
         start: 'top bottom',
         end: 'bottom top',
         scrub: 1,
+      },
+    });
+
+    gsap.to('.info__kicker', {
+      xPercent: 16,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.15,
       },
     });
   }, section);

@@ -82,7 +82,11 @@ export class Navigation {
     toggle.setAttribute('aria-expanded', String(next));
     panel.hidden = !next;
     header.dataset.menuOpen = String(next);
-    if (label) label.textContent = next ? 'Tanca' : 'Menú';
+    if (label) {
+      label.textContent = next
+        ? (label.dataset.labelOpen ?? 'Tanca')
+        : (label.dataset.labelClosed ?? 'Menú');
+    }
 
     if (next) {
       this.scroll.stop();

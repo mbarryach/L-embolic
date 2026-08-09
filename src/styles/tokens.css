@@ -1,39 +1,36 @@
 @layer tokens {
-  /*
-    Paleta heredada del sitio original. No se toca el alma: nit tancada,
-    neons, crema i tres acents. Lo unico que hemos hecho es darle mas rango
-    (un negro mas profundo para la profundidad y las nieblas del canvas).
-  */
   :root {
     /* --- superficies --- */
-    --c-void: #0c0b0f;
-    --c-night: #17171b;
-    --c-surface-2: #2a2731;
+    --c-void: #080809;
+    --c-night: #111113;
+    --c-surface-2: #1c1b1d;
+    --c-surface-3: #252326;
 
     /* --- tinta --- */
-    --c-cream: #f2e9dc;
-    --c-cream-70: rgb(242 233 220 / 70%);
-    --c-cream-50: rgb(242 233 220 / 50%);
-    --c-cream-30: rgb(242 233 220 / 30%);
+    --c-cream: #f5efe5;
+    --c-cream-70: rgb(245 239 229 / 72%);
+    --c-cream-50: rgb(245 239 229 / 50%);
+    --c-cream-30: rgb(245 239 229 / 28%);
 
     /* --- acentos --- */
-    --c-teal: #4dd9e8;
-    --c-coral: #ff6e6b;
-    --c-mustard: #e8b94a;
-    --c-sage: #8fbf9f;
+    --c-teal: #76c8c4;
+    --c-coral: #b85462;
+    --c-mustard: #c9a96b;
+    --c-sage: #91a98d;
 
     /* Acento "activo": lo reescribe JS segun el coctel en foco.
        Todo lo que brilla lee de aqui, asi la seccion entera cambia de humor. */
     --c-accent: var(--c-teal);
 
     /* --- lineas --- */
-    --line-hair: rgb(242 233 220 / 12%);
-    --line-soft: rgb(242 233 220 / 20%);
+    --line-hair: rgb(245 239 229 / 11%);
+    --line-soft: rgb(245 239 229 / 20%);
+    --line-accent: rgb(201 169 107 / 42%);
 
     /* --- tipografia --- */
-    --font-display: 'Fredoka', system-ui, sans-serif;
-    --font-hand: 'Caveat', ui-rounded, cursive;
-    --font-body: 'Work Sans', system-ui, sans-serif;
+    --font-display: 'Cormorant Garamond', georgia, serif;
+    --font-hand: 'Cormorant Garamond', georgia, serif;
+    --font-body: 'Manrope', system-ui, sans-serif;
 
     /* Escala fluida. El titular gigante puede comerse media pantalla,
        que para eso es el titular gigante. */
@@ -41,16 +38,16 @@
     --fs-small: clamp(0.813rem, 0.78rem + 0.16vw, 0.906rem);
     --fs-body: clamp(0.938rem, 0.9rem + 0.2vw, 1.063rem);
     --fs-lead: clamp(1.063rem, 0.98rem + 0.42vw, 1.313rem);
-    --fs-h3: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
-    --fs-h2: clamp(2rem, 1.3rem + 3.4vw, 4.5rem);
-    --fs-h1: clamp(3rem, 1rem + 9.5vw, 10rem);
-    --fs-hand: clamp(1.5rem, 1.15rem + 1.7vw, 2.75rem);
+    --fs-h3: clamp(1.75rem, 1.45rem + 1.15vw, 2.65rem);
+    --fs-h2: clamp(3.25rem, 1.8rem + 5.8vw, 7.75rem);
+    --fs-h1: clamp(4.5rem, 1rem + 11vw, 12rem);
+    --fs-hand: clamp(1.65rem, 1.2rem + 1.9vw, 3rem);
 
-    --lh-tight: 0.92;
+    --lh-tight: 0.84;
     --lh-snug: 1.12;
     --lh-body: 1.6;
-    --tracking-wide: 0.18em;
-    --tracking-tight: -0.02em;
+    --tracking-wide: 0.24em;
+    --tracking-tight: -0.035em;
 
     /* --- ritmo --- */
     --space-2xs: 0.5rem;
@@ -69,7 +66,7 @@
     --measure: 62ch;
 
     /* --- formas (pocas: aqui casi nada tiene esquinas redondas) --- */
-    --radius-hair: 2px;
+    --radius-hair: 1px;
     --radius-pill: 999px;
 
     /* --- capas --- */
@@ -87,7 +84,7 @@
     --ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
 
     /* --- sombras (pocas, y siempre duras: esto es un bar, no un dashboard) --- */
-    --shadow-lift: 0 18px 40px rgb(0 0 0 / 45%);
+    --shadow-lift: 0 28px 80px rgb(0 0 0 / 55%);
     --glow-accent: 0 0 12px color-mix(in sRGB, var(--c-accent) 55%, transparent);
 
     /* Altura real del viewport. La pisa JS en moviles donde 100vh miente. */

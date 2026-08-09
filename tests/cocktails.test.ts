@@ -55,4 +55,29 @@ describe('la carta del markup y la del indice van a la par', () => {
     );
     expect(indexes).toEqual(['01', '02', '03', '04', '05', '06']);
   });
+
+  it('la navegación interactiva ofrece un selector por cada cóctel', () => {
+    const root = document.createElement('div');
+    root.innerHTML = markup;
+    const selectors = Array.from(
+      root.querySelectorAll<HTMLButtonElement>('[data-cocktail-select]'),
+    );
+
+    expect(selectors.map((button) => button.dataset.cocktailSelect)).toEqual([
+      '0',
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+    ]);
+    expect(selectors.map((button) => button.getAttribute('aria-pressed'))).toEqual([
+      'true',
+      'false',
+      'false',
+      'false',
+      'false',
+      'false',
+    ]);
+  });
 });

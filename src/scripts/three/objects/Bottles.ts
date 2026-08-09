@@ -24,6 +24,10 @@ const PLACEMENTS: readonly Placement[] = [
   { position: new Vector3(-2.6, -0.4, -3.1), spin: 0.055, scale: 1.05 },
   { position: new Vector3(2.7, -0.3, -3.8), spin: -0.042, scale: 1.2 },
   { position: new Vector3(-1.7, -0.6, -5.2), spin: 0.031, scale: 0.9 },
+  { position: new Vector3(-3.25, 0.82, -4.4), spin: -0.026, scale: 0.82 },
+  { position: new Vector3(-0.7, 0.74, -4.8), spin: 0.038, scale: 1.08 },
+  { position: new Vector3(1.55, 0.86, -4.2), spin: -0.033, scale: 0.92 },
+  { position: new Vector3(3.35, 0.76, -5.4), spin: 0.024, scale: 0.78 },
 ];
 
 /**
@@ -47,9 +51,9 @@ export class Bottles {
     // Muy bajitas de tono: son la estanteria del fondo, no las
     // protagonistas. Si se ven demasiado le roban el sitio al texto.
     const material = createNeonMaterial({
-      color: '#1e4a4d',
-      rim: '#4dd9e8',
-      opacity: 0.05,
+      color: '#21494b',
+      rim: '#76c8c4',
+      opacity: 0.045,
       rimPower: 4.2,
       glow: 0.5,
     });

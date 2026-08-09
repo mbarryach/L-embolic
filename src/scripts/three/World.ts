@@ -4,6 +4,7 @@ import { clamp, damp, progressBetween } from '../utils/math';
 import { disposeObject } from './dispose';
 import { setRimColor } from './materials/neonMaterial';
 import { Bottles } from './objects/Bottles';
+import { BarArchitecture } from './objects/BarArchitecture';
 import { Garnish } from './objects/Garnish';
 import { Glass } from './objects/Glass';
 import { Ice } from './objects/Ice';
@@ -39,9 +40,10 @@ export class World {
   private readonly neon: NeonSign;
   private readonly particles: Particles;
   private readonly bottles: Bottles | null;
+  private readonly architecture: BarArchitecture | null;
 
-  private readonly accent = new Color('#4dd9e8');
-  private readonly accentTarget = new Color('#4dd9e8');
+  private readonly accent = new Color('#76c8c4');
+  private readonly accentTarget = new Color('#76c8c4');
   private home: { x: number; y: number; scale: number } = HOME_WIDE;
 
   constructor(quality: QualityProfile, aspect: number) {
@@ -50,7 +52,7 @@ export class World {
     // Niebla exponencial: lo que se aleja se disuelve en el color del fondo
     // en vez de recortarse contra el. Es medio truco de profundidad y medio
     // excusa para no dibujar nada mas alla de cierta distancia.
-    this.scene.fog = new FogExp2(0x0c0b0f, 0.085);
+    this.scene.fog = new FogExp2(0x080809, 0.085);
 
     this.glass = new Glass();
     this.ice = new Ice(quality.iceCount);
@@ -58,8 +60,10 @@ export class World {
     this.neon = new NeonSign();
     this.particles = new Particles(quality.particleCount);
     this.bottles = quality.bottles ? new Bottles() : null;
+    this.architecture = quality.bottles ? new BarArchitecture() : null;
 
     this.stage.add(this.glass.group, this.ice.mesh, this.garnish.group);
+    if (this.architecture) this.stage.add(this.architecture.group);
     if (this.bottles) this.stage.add(this.bottles.mesh);
     this.stage.position.set(this.home.x, 0, 0);
     this.glass.group.position.y = this.home.y;
@@ -98,6 +102,7 @@ export class World {
     this.particles.write(gather);
     this.neon.write(elapsed);
     this.bottles?.write(elapsed);
+    this.architecture?.write(p, elapsed);
 
     // La copa gira despacio siempre, y se inclina y se hunde a medida que
     // el resto se le escapa.
@@ -118,6 +123,7 @@ export class World {
     this.accent.b = damp(this.accent.b, this.accentTarget.b, ACCENT_SMOOTHING, delta);
 
     this.neon.tint(this.accent);
+    this.architecture?.tint(this.accent);
     setRimColor(this.glass.liquid, this.accent);
   }
 

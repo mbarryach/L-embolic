@@ -46,7 +46,7 @@ export function createHeroTimeline({ motion }: TimelineContext): SectionTimeline
       intro = gsap.timeline({ paused: true, defaults: { ease: EASE.standard } });
 
       intro.set(glyphs, { opacity: 0 });
-      intro.set(['.hero__tagline', '.hero__sub', '.hero__cta .btn', '.hero__mark', '.scroll-cue'], {
+      intro.set(['.hero__tagline', '.hero__sub', '.hero__cta .btn', '.hero__mark', '.hero__edition', '.scroll-cue'], {
         opacity: 0,
         y: 18,
       });
@@ -70,6 +70,7 @@ export function createHeroTimeline({ motion }: TimelineContext): SectionTimeline
       drawStrokes(doodle, intro, 0.85);
 
       intro.to('.hero__mark', { opacity: 1, y: 0, duration: DURATION.medium }, 1.0);
+      intro.to('.hero__edition', { opacity: 1, y: 0, duration: DURATION.medium }, 1.08);
       intro.to(
         '.hero__tagline',
         { opacity: 1, y: 0, duration: DURATION.slow, ease: EASE.emphasis },
@@ -108,6 +109,7 @@ export function createHeroTimeline({ motion }: TimelineContext): SectionTimeline
       .to('.hero__tagline', { yPercent: -60, opacity: 0, ease: 'none' }, 0)
       .to('.hero__doodle', { yPercent: -140, rotate: -18, opacity: 0, ease: 'none' }, 0)
       .to('.hero__foot', { yPercent: -18, opacity: 0, ease: 'none' }, 0.1)
+      .to('.hero__edition', { xPercent: 24, opacity: 0, ease: 'none' }, 0)
       .to('.scroll-cue', { opacity: 0, ease: 'none' }, 0);
   }, hero);
 

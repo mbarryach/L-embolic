@@ -61,6 +61,31 @@
     }
   }
 
+  @keyframes jewel-pulse {
+    from {
+      opacity: 0.28;
+      transform: scale(0.75);
+    }
+
+    to {
+      opacity: 0.95;
+      transform: scale(1.15);
+    }
+  }
+
+  @keyframes halo-breathe {
+    0%,
+    100% {
+      opacity: 0.28;
+      transform: scale(0.96);
+    }
+
+    50% {
+      opacity: 0.62;
+      transform: scale(1.04);
+    }
+  }
+
   @keyframes cue-slide {
     0% {
       transform: scaleY(0);

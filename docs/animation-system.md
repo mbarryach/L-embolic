@@ -68,7 +68,7 @@ propósito: si todas entraran igual, la página sería un desfile.
 | -------- | --------------------------------------------------------------------------------------------------- |
 | Hero     | Los tubos del neón encienden **de uno en uno y en desorden**, con dos parpadeos                     |
 | Qui som  | Las líneas del titular suben desde debajo de su ventanilla; los nombres de cóctel se subrayan solos |
-| La carta | Las dos líneas del titular entran desde lados opuestos; el raíl se mueve con el scroll              |
+| La carta | El escenario se revela, la foto cambia por capas y cada tramo de scroll sirve un cóctel             |
 | On som   | La dirección entra entera, de una pieza, y luego deriva despacio                                    |
 | Outro    | Único sitio con revelado letra a letra                                                              |
 
@@ -129,6 +129,7 @@ Cada factory decide qué hacer; no hay un interruptor global que lo apague todo:
 - `aboutTimeline` pinta los subrayados de golpe en vez de animarlos: el adorno existe, pero
   quieto.
 - `heroTimeline` marca el neón como encendido directamente y se salta la secuencia.
-- `cocktailsTimeline` no ancla nada; el raíl se queda como carrusel.
+- `cocktailMenuTimeline` no ancla nada; los índices, flechas, teclado y gesto táctil siguen
+  cambiando la copa sin animaciones espaciales.
 - Los bucles ambientales (grano, banderines, marquesina) se paran en `animations.css`, y las
   transiciones bajan a 120 ms.

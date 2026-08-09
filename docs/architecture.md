@@ -102,8 +102,8 @@ la copa ocuparía la pantalla entera.
 - **Facade** — `Experience` es la única puerta a Three. Fuera de `three/` nadie sabe que existe
   un renderer.
 - **Observer** — el `EventBus`.
-- **Strategy** — los perfiles de calidad de `device.ts` y las dos ramas de la carta (raíl
-  anclado o carrusel nativo).
+- **Strategy** — los perfiles de calidad de `device.ts` y las dos ramas de la carta (escenario
+  anclado por scroll o selector táctil sin pin).
 
 No hay factories, ni repositorios, ni servicios, ni contenedor de inyección. No hay dominio que
 lo justifique.

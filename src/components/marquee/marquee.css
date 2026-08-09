@@ -6,12 +6,13 @@
   .marquee {
     position: relative;
     z-index: var(--z-content);
-    padding-block: var(--space-s);
-    margin-block: var(--space-xl);
+    padding-block: 0.9rem;
+    margin-block: var(--space-2xl);
     overflow: hidden;
     border-block: 1px solid var(--line-hair);
-    background: rgb(12 11 15 / 55%);
-    transform: rotate(-1.6deg) scaleX(1.06);
+    background: rgb(8 8 9 / 62%);
+    backdrop-filter: blur(12px);
+    transform: rotate(-0.65deg) scaleX(1.03);
   }
 
   .marquee__track {
@@ -29,8 +30,9 @@
 
   .marquee__item {
     font-family: var(--font-display);
-    font-size: clamp(1.4rem, 3.4vw, 2.6rem);
-    font-weight: 600;
+    font-size: clamp(1.65rem, 3.4vw, 3.15rem);
+    font-weight: 500;
+    font-style: italic;
     line-height: 1;
     letter-spacing: var(--tracking-tight);
     white-space: nowrap;
@@ -39,15 +41,16 @@
 
   .marquee__item--hollow {
     color: transparent;
-    -webkit-text-stroke: 1px var(--c-teal);
+    -webkit-text-stroke: 1px var(--c-mustard);
   }
 
   .marquee__dot {
-    inline-size: 7px;
-    block-size: 7px;
+    inline-size: 3px;
+    block-size: 3px;
     flex: none;
     border-radius: 50%;
-    background: var(--c-coral);
+    background: var(--c-mustard);
+    box-shadow: 0 0 8px rgb(201 169 107 / 55%);
   }
 
   .marquee:hover .marquee__track {

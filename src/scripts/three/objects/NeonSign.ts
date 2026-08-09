@@ -34,7 +34,7 @@ export class NeonSign {
     offset: number,
   ): void {
     const material = new MeshBasicMaterial({
-      color: new Color('#4dd9e8'),
+      color: new Color('#76c8c4'),
       transparent: true,
       opacity,
       depthWrite: false,

@@ -47,7 +47,9 @@ describe('expandPartials', () => {
     const output = expand(readFileSync(from, 'utf8'));
     expect(output).not.toContain('@include');
     expect(output).toContain('id="carta"');
+    expect(output).toContain('id="ambient"');
     expect(output).toContain('id="info"');
+    expect(output).toContain('data-contact-dock');
     expect(output).toContain('data-stage-canvas');
   });
 });

@@ -31,6 +31,19 @@ export function createOutroTimeline({ motion }: TimelineContext): SectionTimelin
         scrollTrigger: { trigger: '.outro', start: 'top 75%', once: true },
       },
     );
+
+    gsap.fromTo(
+      '.outro__meta > *',
+      { autoAlpha: 0, y: 16 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: DURATION.medium,
+        ease: EASE.emphasis,
+        stagger: 0.08,
+        scrollTrigger: { trigger: '.outro__meta', start: 'top 92%', once: true },
+      },
+    );
   }, '.outro');
 
   return {

@@ -35,11 +35,11 @@
 
   .loader__stroke {
     fill: none;
-    stroke: var(--c-teal);
-    stroke-width: 4;
+    stroke: var(--c-mustard);
+    stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
-    filter: drop-shadow(0 0 6px rgb(77 217 232 / 70%));
+    filter: drop-shadow(0 0 7px rgb(201 169 107 / 55%));
     stroke-dasharray: var(--dash, 240);
     stroke-dashoffset: calc(var(--dash, 240) * (1 - var(--loader-progress, 0)));
     transition: stroke-dashoffset 400ms var(--ease-standard);
@@ -48,8 +48,8 @@
   .loader__stroke--liquid {
     --dash: 60;
 
-    stroke: var(--c-mustard);
-    filter: drop-shadow(0 0 6px rgb(232 185 74 / 70%));
+    stroke: var(--c-coral);
+    filter: drop-shadow(0 0 6px rgb(184 84 98 / 60%));
   }
 
   .loader__tube {
@@ -64,8 +64,8 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--c-teal);
-    box-shadow: 0 0 10px var(--c-teal);
+    background: var(--c-mustard);
+    box-shadow: 0 0 10px var(--c-mustard);
     transform: scaleX(var(--loader-progress, 0));
     transform-origin: left center;
     transition: transform 400ms var(--ease-standard);

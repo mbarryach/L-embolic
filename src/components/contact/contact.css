@@ -1,0 +1,139 @@
+@layer components {
+  .contact-dock {
+    position: fixed;
+    inset: auto clamp(1rem, 2.2vw, 2rem) clamp(1rem, 2.2vw, 2rem) auto;
+    z-index: calc(var(--z-header) - 1);
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+    pointer-events: none;
+    transition:
+      opacity var(--dur-slow) var(--ease-emphasis),
+      transform var(--dur-slow) var(--ease-emphasis);
+  }
+
+  .contact-dock[data-visible='true'] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    pointer-events: auto;
+  }
+
+  .contact-dock__link {
+    display: flex;
+    gap: var(--space-s);
+    align-items: center;
+    min-block-size: 58px;
+    padding: 0.62rem 0.68rem 0.62rem 1.1rem;
+    color: var(--c-cream);
+    text-decoration: none;
+    background: linear-gradient(135deg, rgb(245 239 229 / 10%), rgb(245 239 229 / 3%)), rgb(8 8 9 / 62%);
+    border: 1px solid rgb(245 239 229 / 15%);
+    box-shadow:
+      0 20px 55px rgb(0 0 0 / 44%),
+      inset 0 1px 0 rgb(245 239 229 / 12%);
+    backdrop-filter: blur(18px) saturate(130%);
+    transition:
+      border-color var(--dur-medium) var(--ease-standard),
+      background-color var(--dur-medium) var(--ease-standard);
+  }
+
+  .contact-dock__link:hover,
+  .contact-dock__link:focus-visible {
+    border-color: rgb(118 200 196 / 52%);
+    background-color: rgb(25 48 42 / 44%);
+  }
+
+  .contact-dock__copy {
+    display: grid;
+    gap: 0.08rem;
+  }
+
+  .contact-dock__kicker {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-style: italic;
+    line-height: 1;
+    color: var(--c-cream-70);
+  }
+
+  .contact-dock__label {
+    font-size: 0.61rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-cream-50);
+  }
+
+  .contact-dock__icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    inline-size: 42px;
+    block-size: 42px;
+    color: #b9ead7;
+    background: rgb(38 97 76 / 38%);
+    border: 1px solid rgb(185 234 215 / 28%);
+    border-radius: 50%;
+    box-shadow: 0 0 26px rgb(76 180 137 / 18%);
+  }
+
+  .contact-dock__icon::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border: 1px solid rgb(185 234 215 / 20%);
+    border-radius: inherit;
+    animation: contact-pulse 2.8s var(--ease-standard) infinite;
+  }
+
+  .contact-dock__icon svg {
+    inline-size: 22px;
+    block-size: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.55;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  @keyframes contact-pulse {
+    0%,
+    100% {
+      opacity: 0.25;
+      transform: scale(0.92);
+    }
+
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .contact-dock__link {
+      min-block-size: 52px;
+      padding: 0.42rem;
+      border-radius: 50%;
+    }
+
+    .contact-dock__copy {
+      display: none;
+    }
+
+    .contact-dock__icon {
+      inline-size: 42px;
+      block-size: 42px;
+    }
+  }
+}
+
+@layer overrides {
+  @media (prefers-reduced-motion: reduce) {
+    .contact-dock__icon::before {
+      animation: none;
+    }
+
+    .contact-dock {
+      transition-duration: 120ms;
+    }
+  }
+}

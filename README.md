@@ -151,10 +151,10 @@ y la cámara la recorre.
 | 0.82     | On som     | Casi todo en la niebla, solo quedan partículas                |
 | 1.00     | Outro      | Las partículas se agrupan detrás del logotipo                 |
 
-La sección de la carta es un raíl horizontal. En escritorio se ancla (`pin`) y avanza con el
-scroll; en táctil es un carrusel nativo con `scroll-snap`. En ambos casos, la lámina que cruza
-la línea de foco se ilumina y **su color se propaga a toda la página**: barra de progreso,
-subrayados y las luces de la escena 3D.
+La carta es un escenario fotográfico interactivo. En escritorio se ancla (`pin`) y cada tramo
+de scroll sirve un cóctel nuevo; en táctil se controla con índices, flechas o gesto lateral.
+También funciona con teclado. En todos los casos, la copa activa cambia **el color de toda la
+página**: barra de progreso, controles y luces de la escena 3D.
 
 ---
 
@@ -192,10 +192,9 @@ Genera AVIF y WebP a 420/700/1040 px en `src/assets/photos/`, más `public/og-im
 recortada a 1200×630. Los resultados están versionados, así que **no hace falta `sharp` para
 compilar**: solo para añadir o cambiar fotos.
 
-> Ahora mismo hay foto de Tiki, Cocotro, Old Fashioned y Dry Basil. Mojito Meduixa y Margarita
-> muestran su ilustración de trazo hasta que haya foto: basta con dejar el archivo en
-> `photos-src/`, ejecutar el script y cambiar el `<div class="plate__sketch">` por un bloque
-> `<figure class="plate__shot">` en `src/components/cocktails/cocktails.html`.
+Los seis cócteles tienen fotografía responsive en AVIF y WebP. Para sustituir una imagen,
+deja el nuevo original con el mismo nombre en `photos-src/` y ejecuta el script: el markup no
+necesita cambios.
 
 ---
 

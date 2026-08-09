@@ -15,17 +15,19 @@ interface CameraKey {
  *
  *  0.00  hero      — de frente y cerca, la copa llena el encuadre
  *  0.16  marquesina— empieza a retirarse, la escena se abre
- *  0.34  qui som   — se va a la derecha para dejar sitio al texto
- *  0.58  la carta  — atras del todo, aparecen las botellas y hay profundidad
- *  0.82  on som    — casi todo en la niebla, solo quedan motas
+ *  0.30  qui som   — se va a la derecha para dejar sitio al texto
+ *  0.48  ambient   — atraviesa la arquitectura de la barra
+ *  0.68  la carta  — atras del todo, aparecen las botellas y hay profundidad
+ *  0.86  on som    — casi todo en la niebla, solo quedan motas
  *  1.00  outro     — vuelve al centro y se acerca al nucleo de particulas
  */
 const KEYS: readonly CameraKey[] = [
   { at: 0, position: [0.55, 0.05, 5.1], target: [0.75, -0.28, 0] },
-  { at: 0.16, position: [1.2, 0.5, 6.1], target: [0.35, -0.1, 0] },
-  { at: 0.34, position: [2.5, 0.24, 5.3], target: [1.15, -0.05, 0] },
-  { at: 0.58, position: [0.4, -0.32, 8.2], target: [0.2, -0.15, 0] },
-  { at: 0.82, position: [-1.1, 0.28, 9.8], target: [-0.1, 0.08, 0] },
+  { at: 0.14, position: [1.2, 0.5, 6.1], target: [0.35, -0.1, 0] },
+  { at: 0.3, position: [2.5, 0.24, 5.3], target: [1.15, -0.05, 0] },
+  { at: 0.48, position: [-1.6, 0.42, 7.1], target: [0.2, 0.05, -1.4] },
+  { at: 0.68, position: [0.4, -0.32, 8.4], target: [0.2, -0.15, 0] },
+  { at: 0.86, position: [-1.1, 0.28, 9.8], target: [-0.1, 0.08, 0] },
   { at: 1, position: [0, 0.1, 5.4], target: [0, 0, 0] },
 ];
 

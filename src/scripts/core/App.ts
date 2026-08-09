@@ -9,13 +9,17 @@ import { AnimationManager } from '../animation/AnimationManager';
 import { createRevealTimeline } from '../animation/reveal';
 import { createHeroTimeline } from '../animation/timelines/heroTimeline';
 import { createAboutTimeline } from '../animation/timelines/aboutTimeline';
-import { createCocktailsTimeline } from '../animation/timelines/cocktailsTimeline';
+import { createCocktailMenuTimeline } from '../animation/timelines/cocktailMenuTimeline';
+import { createAmbienceTimeline } from '../animation/timelines/ambienceTimeline';
 import { createLocationTimeline } from '../animation/timelines/locationTimeline';
 import { createOutroTimeline } from '../animation/timelines/outroTimeline';
 import { Navigation } from '../interactions/Navigation';
 import { MagneticButton } from '../interactions/MagneticButton';
 import { PointerParallax } from '../interactions/PointerParallax';
 import { Bunting } from '../interactions/Bunting';
+import { LocaleSwitcher } from '../interactions/LocaleSwitcher';
+import { GlassTilt } from '../interactions/GlassTilt';
+import { ContactDock } from '../interactions/ContactDock';
 import { detectTier, isTouchPrimary, qualityFor, supportsWebGL } from '../utils/device';
 import { query, queryAll } from '../utils/dom';
 
@@ -76,14 +80,19 @@ export class App {
   }
 
   private setupInteractions(scroll: ScrollManager): void {
+    this.teardowns.push(new LocaleSwitcher());
     this.teardowns.push(new Navigation(scroll));
     this.teardowns.push(new Bunting());
+    this.teardowns.push(new ContactDock());
 
     // El iman y el parallax son cosa de raton. En tactil no pintan nada.
     if (!isTouchPrimary() && !this.motion.isReduced) {
       this.teardowns.push(new PointerParallax(this.bus));
       for (const element of queryAll('[data-magnetic]')) {
         this.teardowns.push(new MagneticButton(element));
+      }
+      for (const element of queryAll('[data-tilt]')) {
+        this.teardowns.push(new GlassTilt(element));
       }
     }
 
@@ -105,7 +114,8 @@ export class App {
     const hero = animations.register(createHeroTimeline);
     animations.register(createRevealTimeline);
     animations.register(createAboutTimeline);
-    animations.register(createCocktailsTimeline);
+    animations.register(createAmbienceTimeline);
+    animations.register(createCocktailMenuTimeline);
     animations.register(createLocationTimeline);
     animations.register(createOutroTimeline);
 

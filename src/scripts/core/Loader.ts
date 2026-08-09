@@ -44,7 +44,7 @@ export class Loader {
     const element = this.element;
     if (!element) return;
 
-    if (this.status) this.status.textContent = 'Llest.';
+    if (this.status) this.status.textContent = this.status.dataset.readyLabel ?? 'Llest.';
     element.dataset.state = 'done';
 
     // Fuera del DOM en cuanto acaba el barrido, que si no se queda una capa

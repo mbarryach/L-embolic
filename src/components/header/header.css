@@ -9,7 +9,7 @@
     inset-block-start: 0;
     inset-inline: 0;
     z-index: var(--z-header);
-    padding-block-start: 44px;
+    padding-block-start: 24px;
     transition: padding-block-start var(--dur-medium) var(--ease-standard);
   }
 
@@ -18,7 +18,7 @@
     gap: var(--space-m);
     align-items: center;
     padding-inline: var(--grid-margin);
-    padding-block: var(--space-m);
+    padding-block: 1.15rem;
     border-block-end: 1px solid transparent;
     transition:
       padding-block var(--dur-medium) var(--ease-standard),
@@ -31,19 +31,19 @@
   }
 
   .masthead[data-condensed='true'] .masthead__bar {
-    padding-block: 0.6rem;
-    background: rgb(12 11 15 / 72%);
+    padding-block: 0.72rem;
+    background: rgb(8 8 9 / 76%);
     border-block-end-color: var(--line-hair);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px) saturate(130%);
   }
 
   .masthead__brand {
     position: relative;
     display: grid;
     font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 700;
-    letter-spacing: 0.01em;
+    font-size: 1.65rem;
+    font-weight: 600;
+    letter-spacing: -0.035em;
     text-decoration: none;
     line-height: 1;
   }
@@ -78,14 +78,53 @@
   }
 
   .masthead__link {
-    font-size: var(--fs-small);
+    font-size: 0.69rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--c-cream-70);
   }
 
   .masthead__phone {
-    font-size: var(--fs-small);
+    font-size: 0.69rem;
+    letter-spacing: 0.08em;
     font-variant-numeric: tabular-nums;
     color: var(--c-cream-70);
+  }
+
+  .locale {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem;
+    background: rgb(245 239 229 / 4%);
+    border: 1px solid var(--line-hair);
+    backdrop-filter: blur(12px);
+  }
+
+  .locale__option {
+    min-inline-size: 2rem;
+    min-block-size: 30px;
+    padding: 0.25rem 0.42rem;
+    background: transparent;
+    border: 0;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--c-cream-30);
+    cursor: pointer;
+    transition:
+      color var(--dur-fast) var(--ease-standard),
+      background-color var(--dur-fast) var(--ease-standard);
+  }
+
+  .locale__option:hover,
+  .locale__option:focus-visible {
+    color: var(--c-cream);
+  }
+
+  .locale__option[data-active='true'] {
+    color: var(--c-void);
+    background: var(--c-cream);
   }
 
   /* --- boton de menu (solo movil/tablet) --- */
@@ -98,9 +137,9 @@
     margin-inline-start: auto;
     background: none;
     border: 0;
-    font-size: var(--fs-small);
-    letter-spacing: 0.06em;
-    text-transform: lowercase;
+    font-size: 0.69rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     cursor: pointer;
   }
 
@@ -132,7 +171,7 @@
     align-content: center;
     min-block-size: var(--vh);
     padding: var(--space-2xl) var(--grid-margin);
-    background: var(--c-void);
+    background: radial-gradient(circle at 80% 20%, rgb(201 169 107 / 8%), transparent 36rem), var(--c-void);
   }
 
   .menu[hidden] {
@@ -150,9 +189,9 @@
     align-items: baseline;
     padding-block: var(--space-2xs);
     font-family: var(--font-display);
-    font-size: clamp(2rem, 11vw, 3.5rem);
-    font-weight: 600;
-    line-height: 1;
+    font-size: clamp(3rem, 14vw, 5rem);
+    font-weight: 500;
+    line-height: 0.9;
     text-decoration: none;
     color: var(--c-cream);
     transition: color var(--dur-fast) var(--ease-standard);
@@ -160,7 +199,7 @@
 
   .menu__link:hover,
   .menu__link:focus-visible {
-    color: var(--c-teal);
+    color: var(--c-mustard);
   }
 
   .menu__index {
@@ -187,10 +226,33 @@
       display: inline-flex;
     }
 
+    .masthead__locale {
+      margin-inline-start: auto;
+    }
+
     .masthead[data-menu-open='true'] {
       block-size: var(--vh);
       overflow-y: auto;
       background: var(--c-void);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .masthead {
+      padding-block-start: 18px;
+    }
+
+    .masthead__bar {
+      gap: 0.55rem;
+    }
+
+    .locale__option {
+      min-inline-size: 1.7rem;
+      padding-inline: 0.28rem;
+    }
+
+    .masthead__toggle {
+      margin-inline-start: 0;
     }
   }
 }

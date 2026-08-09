@@ -1,20 +1,18 @@
 @layer components {
-  /*
-    Botones. Se queda la pastilla y la sombra dura del original (eso era
-    del bar, no una moda), pero ahora responden al iman del cursor.
-  */
   .btn {
     display: inline-flex;
     gap: var(--space-2xs);
     align-items: center;
-    min-block-size: 44px;
-    padding: 0.8rem 1.6rem;
-    font-size: var(--fs-small);
+    min-block-size: 48px;
+    padding: 0.95rem 1.65rem;
+    font-size: 0.72rem;
     font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     text-decoration: none;
     white-space: nowrap;
     border: 0;
-    border-radius: var(--radius-pill);
+    border-radius: 0;
     cursor: pointer;
     transition:
       transform var(--dur-fast) var(--ease-standard),
@@ -24,18 +22,20 @@
   }
 
   .btn--primary {
-    background: var(--c-coral);
-    color: #1a1114;
-    box-shadow: 0 5px 0 0 #b8433f;
+    background: var(--c-cream);
+    color: var(--c-void);
+    box-shadow: inset 0 0 0 1px var(--c-cream);
   }
 
   .btn--primary:hover,
   .btn--primary:focus-visible {
-    box-shadow: 0 7px 0 0 #b8433f;
+    color: var(--c-cream);
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--c-cream);
   }
 
   .btn--primary:active {
-    box-shadow: 0 2px 0 0 #b8433f;
+    opacity: 0.72;
   }
 
   .btn--ghost {
@@ -46,8 +46,8 @@
 
   .btn--ghost:hover,
   .btn--ghost:focus-visible {
-    color: var(--c-accent);
-    box-shadow: inset 0 0 0 1px var(--c-accent);
+    color: var(--c-mustard);
+    box-shadow: inset 0 0 0 1px var(--c-mustard);
   }
 
   .btn__icon {
