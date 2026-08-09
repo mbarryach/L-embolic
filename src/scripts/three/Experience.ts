@@ -31,6 +31,7 @@ export class Experience {
   private readonly unsubscribes: (() => void)[] = [];
   private progress = 0;
   private dirty = true;
+  private heroActive = true;
 
   constructor(options: ExperienceOptions) {
     const { canvas, bus, ticker, quality, size, motion } = options;
@@ -51,6 +52,15 @@ export class Experience {
     this.unsubscribes.push(
       bus.on('viewport:resize', (next) => {
         this.resize(next);
+      }),
+    );
+
+    this.unsubscribes.push(
+      bus.on('hero:active', (active) => {
+        this.heroActive = active;
+        // Al volver al hero hay que repintar aunque nadie haya tocado nada:
+        // mientras estaba apagado el mundo se ha quedado congelado.
+        if (active) this.dirty = true;
       }),
     );
 
@@ -78,6 +88,10 @@ export class Experience {
    * y la GPU se queda en silencio, que es justo lo que se ha pedido.
    */
   private readonly frame = (delta: number, elapsed: number): void => {
+    // Fuera del hero el canvas esta fundido a cero y tapado por el video:
+    // seguir renderizando seria calentar la GPU para que no lo vea nadie.
+    if (!this.heroActive) return;
+
     if (this.reduced) {
       if (!this.dirty) return;
       this.dirty = false;

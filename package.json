@@ -20,6 +20,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "assets:images": "node scripts/optimize-images.mjs",
+    "assets:video": "node scripts/optimize-video.mjs",
     "validate": "npm run lint && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

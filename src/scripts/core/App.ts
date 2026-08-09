@@ -11,6 +11,11 @@ import { createHeroTimeline } from '../animation/timelines/heroTimeline';
 import { createAboutTimeline } from '../animation/timelines/aboutTimeline';
 import { createCocktailMenuTimeline } from '../animation/timelines/cocktailMenuTimeline';
 import { createAmbienceTimeline } from '../animation/timelines/ambienceTimeline';
+import { createSignatureTimeline } from '../animation/timelines/signatureTimeline';
+import { BackgroundVideo } from '../animation/BackgroundVideo';
+import { HeroPresence } from '../interactions/HeroPresence';
+import { AgeGate } from '../interactions/AgeGate';
+import { GoogleListingBadge } from '../interactions/GoogleListingBadge';
 import { createLocationTimeline } from '../animation/timelines/locationTimeline';
 import { createOutroTimeline } from '../animation/timelines/outroTimeline';
 import { Navigation } from '../interactions/Navigation';
@@ -46,6 +51,10 @@ export class App {
   private animations: AnimationManager | null = null;
 
   async start(): Promise<void> {
+    // Lo primero de todo: si alguien no tiene la edad, no deberia llegar
+    // ni a ver el loader.
+    this.teardowns.push(new AgeGate());
+
     this.loader.progress(0.2);
 
     this.viewport = new Viewport(this.bus);
@@ -84,6 +93,9 @@ export class App {
     this.teardowns.push(new Navigation(scroll));
     this.teardowns.push(new Bunting());
     this.teardowns.push(new ContactDock());
+    this.teardowns.push(new GoogleListingBadge());
+    this.teardowns.push(new BackgroundVideo(this.bus, this.motion));
+    this.teardowns.push(new HeroPresence(this.bus));
 
     // El iman y el parallax son cosa de raton. En tactil no pintan nada.
     if (!isTouchPrimary() && !this.motion.isReduced) {
@@ -115,6 +127,7 @@ export class App {
     animations.register(createRevealTimeline);
     animations.register(createAboutTimeline);
     animations.register(createAmbienceTimeline);
+    animations.register(createSignatureTimeline);
     animations.register(createCocktailMenuTimeline);
     animations.register(createLocationTimeline);
     animations.register(createOutroTimeline);

@@ -95,11 +95,28 @@
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Salta al contingut</a>
 
+    <!-- @include src/components/age-gate/age-gate.html -->
     <!-- @include src/components/loader/loader.html -->
 
-    <!-- El escenario 3D. Fijo, detras de todo, y con su plan B pintado en CSS. -->
+    <!--
+      El fondo de toda la pagina, fijo detras del contenido y en tres capas:
+      un degradado de CSS que siempre esta (plan B si falla todo lo demas),
+      el video que recorre el scroll, el canvas 3D que solo vive en el hero,
+      y un velo que regula cuanto se ve de todo eso segun la seccion.
+    -->
     <div class="stage" aria-hidden="true">
       <div class="stage__fallback"></div>
+      <video
+        class="stage__video"
+        data-stage-video
+        muted
+        playsinline
+        disablepictureinpicture
+        preload="none"
+        poster="/src/assets/video/cocktail-morph-poster.webp"
+      >
+        <source src="/src/assets/video/cocktail-morph.mp4" type="video/mp4" />
+      </video>
       <canvas class="stage__canvas" data-stage-canvas></canvas>
       <div class="stage__scrim"></div>
     </div>
@@ -115,7 +132,9 @@
       <!-- @include src/components/marquee/marquee.html -->
       <!-- @include src/components/about/about.html -->
       <!-- @include src/components/ambience/ambience.html -->
+      <!-- @include src/components/signature/signature.html -->
       <!-- @include src/components/cocktails/cocktails.html -->
+      <!-- @include src/components/reviews/reviews.html -->
       <!-- @include src/components/location/location.html -->
     </main>
 

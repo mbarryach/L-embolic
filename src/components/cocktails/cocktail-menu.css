@@ -586,12 +586,27 @@
       font-size: clamp(2.75rem, 11vw, 4.6rem);
     }
 
+    /*
+      La fila de arriba comparte sitio con las flechas, que estan pegadas a
+      la derecha. Si la edicion y el contador van los dos, se montan encima
+      de los botones en cuanto la pantalla baja de unos 420 px. Se le pone
+      techo de ancho y se deja que el texto se corte antes de invadirlos.
+    */
     .carta__stage-chrome {
       inset: 1rem auto auto 1rem;
+      max-inline-size: calc(100% - 9rem);
+      gap: 0.75rem;
+    }
+
+    .carta__edition {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .carta__counter {
       display: block;
+      flex: none;
     }
 
     .carta__navigator {
@@ -682,8 +697,17 @@
       font-size: 0.78rem;
     }
 
+    /* Por debajo de 540 px la edicion ya no cabe al lado del contador, y el
+       contador es el que de verdad hace falta: dice por cual de las seis
+       vas. Se queda solo el. */
     .carta__edition {
-      max-inline-size: 13rem;
+      display: none;
+    }
+
+    /* El sello de la esquina del panel choca con el indice del coctel
+       cuando el panel se estrecha. */
+    .plate__content::after {
+      content: none;
     }
   }
 

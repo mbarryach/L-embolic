@@ -14,6 +14,7 @@
 
 /* componentes */
 @import url('../components/ui/ui.css');
+@import url('../components/age-gate/age-gate.css');
 @import url('../components/loader/loader.css');
 @import url('../components/bunting/bunting.css');
 @import url('../components/header/header.css');
@@ -21,7 +22,9 @@
 @import url('../components/marquee/marquee.css');
 @import url('../components/about/about.css');
 @import url('../components/ambience/ambience.css');
+@import url('../components/signature/signature.css');
 @import url('../components/cocktails/cocktail-menu.css');
+@import url('../components/reviews/reviews.css');
 @import url('../components/location/location.css');
 @import url('../components/footer/footer.css');
 @import url('../components/contact/contact.css');

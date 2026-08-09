@@ -37,6 +37,10 @@ export interface CocktailFocus {
 
 /** Eventos que viajan por el bus. Todo tipado, nada de strings sueltos. */
 export interface AppEvents {
+  /** Por donde va el video de fondo, de 0 a 1. */
+  'video:fraction': number;
+  /** true mientras el hero esta en pantalla. Apaga la escena 3D al salir. */
+  'hero:active': boolean;
   'viewport:resize': ViewportSize;
   'scroll:progress': number;
   'pointer:move': PointerState;

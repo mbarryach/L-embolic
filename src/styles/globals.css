@@ -65,6 +65,33 @@
     contain: strict;
   }
 
+  /*
+    El video de fondo. Es vertical (4:5) y la pantalla casi nunca lo es, asi
+    que se recorta con cover: se pierde parte de arriba y de abajo, pero la
+    copa vive en el centro y es lo que tiene que verse.
+  */
+  .stage__video {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: 50% 42%;
+    opacity: 0;
+    filter: saturate(0.82) brightness(0.72) contrast(1.05);
+    transition: opacity 900ms var(--ease-standard);
+  }
+
+  /* Solo se enseña cuando JS ha decidido que de verdad va a moverse. */
+  [data-bgvideo] .stage__video {
+    opacity: 1;
+  }
+
+  /*
+    El canvas 3D ya no acompaña toda la pagina: vive en el hero y se apaga
+    al salir de el. Encima del video no aportaba nada y estaban los dos
+    pagando GPU a la vez durante toda la sesion.
+  */
   .stage__canvas {
     inline-size: 100%;
     block-size: 100%;
@@ -74,6 +101,11 @@
 
   [data-webgl='on'] .stage__canvas {
     opacity: 1;
+  }
+
+  /* Al salir del hero se apaga; el fondo pasa a ser solo el video. */
+  [data-hero='out'] .stage__canvas {
+    opacity: 0;
   }
 
   /*
@@ -106,6 +138,13 @@
     background: var(--c-void);
     opacity: calc(0.08 + var(--scroll-progress, 0) * 0.56);
     pointer-events: none;
+    transition: opacity var(--dur-slow) var(--ease-standard);
+  }
+
+  /* En la seccion "d'una copa a l'altra" el velo se retira: ahi el fondo
+     ES el contenido y hay poco texto que proteger. */
+  [data-stage-clear='true'] .stage__scrim {
+    opacity: 0.12;
   }
 
   /*

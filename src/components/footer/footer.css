@@ -64,3 +64,50 @@
     }
   }
 }
+
+@layer components {
+  /*
+    Fila de redes del pie. Solo lo que consta en el proyecto: Instagram, la
+    ficha de Google, WhatsApp y el telefono. Nada de iconos de redes que el
+    bar a lo mejor ni tiene.
+  */
+  .outro__social {
+    row-gap: var(--space-m);
+    padding-block: var(--space-l);
+    border-block-start: 1px solid var(--line-hair);
+  }
+
+  .outro__social-title {
+    grid-column: 1 / span 3;
+    margin: 0;
+    font-size: var(--fs-micro);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--c-cream-50);
+  }
+
+  .outro__links {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 5 / span 8;
+    gap: var(--space-s) clamp(1.25rem, 3vw, 2.75rem);
+    padding: 0;
+    margin: 0;
+  }
+
+  .outro__link {
+    display: inline-flex;
+    gap: var(--space-2xs);
+    align-items: center;
+    min-block-size: 44px;
+    font-size: var(--fs-small);
+    color: var(--c-cream-70);
+  }
+
+  @media (max-width: 900px) {
+    .outro__social-title,
+    .outro__links {
+      grid-column: 1 / -1;
+    }
+  }
+}

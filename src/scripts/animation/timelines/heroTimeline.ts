@@ -46,10 +46,20 @@ export function createHeroTimeline({ motion }: TimelineContext): SectionTimeline
       intro = gsap.timeline({ paused: true, defaults: { ease: EASE.standard } });
 
       intro.set(glyphs, { opacity: 0 });
-      intro.set(['.hero__tagline', '.hero__sub', '.hero__cta .btn', '.hero__mark', '.hero__edition', '.scroll-cue'], {
-        opacity: 0,
-        y: 18,
-      });
+      intro.set(
+        [
+          '.hero__tagline',
+          '.hero__sub',
+          '.hero__cta .btn',
+          '.hero__mark',
+          '.hero__edition',
+          '.scroll-cue',
+        ],
+        {
+          opacity: 0,
+          y: 18,
+        },
+      );
 
       // Los tubos, uno a uno y en desorden.
       GLYPH_ORDER.forEach((index, step) => {
