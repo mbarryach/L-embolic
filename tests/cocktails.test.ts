@@ -56,22 +56,13 @@ describe('la carta del markup y la del indice van a la par', () => {
     expect(indexes).toEqual(['01', '02', '03', '04', '05', '06']);
   });
 
-  it('la navegación interactiva ofrece un selector por cada cóctel', () => {
+  it('la galería ofrece un punto de navegación por cada cóctel', () => {
     const root = document.createElement('div');
     root.innerHTML = markup;
-    const selectors = Array.from(
-      root.querySelectorAll<HTMLButtonElement>('[data-cocktail-select]'),
-    );
+    const dots = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-gallery-dot]'));
 
-    expect(selectors.map((button) => button.dataset.cocktailSelect)).toEqual([
-      '0',
-      '1',
-      '2',
-      '3',
-      '4',
-      '5',
-    ]);
-    expect(selectors.map((button) => button.getAttribute('aria-pressed'))).toEqual([
+    expect(dots.map((button) => button.dataset.galleryDot)).toEqual(['0', '1', '2', '3', '4', '5']);
+    expect(dots.map((button) => button.getAttribute('aria-pressed'))).toEqual([
       'true',
       'false',
       'false',
@@ -79,5 +70,26 @@ describe('la carta del markup y la del indice van a la par', () => {
       'false',
       'false',
     ]);
+  });
+
+  it('cada punto dice a qué cóctel lleva, aunque solo se vea una rayita', () => {
+    // El punto es una raya de 2 px: sin el texto oculto, un lector de
+    // pantalla anunciaria seis botones sin nombre.
+    const root = document.createElement('div');
+    root.innerHTML = markup;
+    const labels = Array.from(root.querySelectorAll('[data-gallery-dot] .visually-hidden')).map(
+      (node) => node.textContent.trim(),
+    );
+
+    expect(labels).toEqual(COCKTAILS.map((cocktail) => cocktail.name));
+  });
+
+  it('las flechas de la galería llevan etiqueta accesible', () => {
+    const root = document.createElement('div');
+    root.innerHTML = markup;
+    for (const selector of ['[data-gallery-prev]', '[data-gallery-next]']) {
+      const button = root.querySelector(selector);
+      expect(button?.getAttribute('aria-label')?.length ?? 0).toBeGreaterThan(3);
+    }
   });
 });
