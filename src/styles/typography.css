@@ -1,0 +1,155 @@
+@layer base {
+  body {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .display {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--fs-h2);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
+  }
+
+  .display--xl {
+    font-size: var(--fs-h1);
+    font-weight: 500;
+    text-wrap: nowrap;
+  }
+
+  .display--outline {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--c-cream-30);
+  }
+
+  /* Ventanilla por linea: la linea entra deslizando desde abajo y lo que
+     sobresale queda recortado. El padding es para que las "g" y las "j"
+     no se queden sin cola. */
+  .display__mask {
+    display: block;
+    padding-block-end: 0.09em;
+    overflow: hidden;
+  }
+
+  /* Las lineas de un titular no se alinean todas: cada una entra un poco
+     mas o un poco menos. Es a proposito, no es que se haya descuadrado. */
+  .display__line {
+    display: block;
+  }
+
+  .display__line--indent {
+    margin-inline-start: clamp(1rem, 8vw, 8rem);
+  }
+
+  .display__line--pull {
+    margin-inline-start: clamp(-3rem, -3vw, -0.5rem);
+  }
+
+  /* Caracteres sueltos que crea splitChars. El pre es para que los espacios
+     no se coman entre ellos al pasar a inline-block. */
+  .char {
+    display: inline-block;
+    white-space: pre;
+  }
+
+  .hand {
+    margin: 0;
+    font-family: var(--font-hand);
+    font-weight: 500;
+    font-size: var(--fs-hand);
+    font-style: italic;
+    line-height: 1.05;
+    color: var(--c-mustard);
+  }
+
+  /* Marcador de escena: "01 — la barra". Va en el margen, en vertical
+     cuando hay sitio, y es lo que le da aire de fanzine. */
+  .scene-mark {
+    display: flex;
+    gap: var(--space-xs);
+    align-items: center;
+    margin: 0;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--c-cream-50);
+  }
+
+  .scene-mark::before {
+    content: '';
+    inline-size: clamp(2rem, 5vw, 5rem);
+    block-size: 1px;
+    background: linear-gradient(90deg, transparent, currentColor);
+  }
+
+  .scene-mark__index {
+    font-variant-numeric: tabular-nums;
+    color: var(--c-accent);
+  }
+
+  .lead {
+    max-inline-size: var(--measure);
+    font-size: var(--fs-lead);
+    line-height: 1.6;
+    color: var(--c-cream-70);
+    text-wrap: pretty;
+  }
+
+  /*
+    Halo oscuro detras del texto. Por encima pasa una escena 3D y aunque
+    este atenuada, un cubito claro justo debajo de una linea la vuelve
+    ilegible. Esto lo soluciona sin meter cajas ni fondos opacos.
+  */
+  .prose p,
+  .lead,
+  .plate__name,
+  .plate__recipe,
+  .info__city,
+  .hours__row {
+    text-shadow:
+      0 0 3px rgb(12 11 15 / 75%),
+      0 1px 14px rgb(12 11 15 / 85%);
+  }
+
+  .prose p {
+    max-inline-size: var(--measure);
+    font-size: clamp(1rem, 0.95rem + 0.28vw, 1.18rem);
+    line-height: 1.8;
+    color: var(--c-cream-70);
+    text-wrap: pretty;
+  }
+
+  .prose p + p {
+    margin-block-start: var(--space-m);
+  }
+
+  /* Nombres de coctel dentro del texto corrido: subrayado que se pinta
+     solo cuando la seccion entra en pantalla. */
+  .mark {
+    /* Declarada aqui a proposito: GSAP necesita leer un valor inicial real
+       para poder interpolarla, con var(..., 0) en el ::after no le vale. */
+    --mark-progress: 0;
+
+    position: relative;
+    color: var(--c-cream);
+    white-space: nowrap;
+  }
+
+  .mark::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -0.1em;
+    block-size: 2px;
+    background: var(--c-accent);
+    transform: scaleX(var(--mark-progress));
+    transform-origin: left center;
+    transition: transform var(--dur-slow) var(--ease-emphasis);
+  }
+}

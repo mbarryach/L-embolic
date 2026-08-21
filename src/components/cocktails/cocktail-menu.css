@@ -1,0 +1,331 @@
+/*
+  Carta en galeria horizontal, al estilo de las galerias de producto de
+  Apple: varias laminas a la vez, la siguiente asomando por el borde para
+  que se vea que hay mas, y scroll con snap.
+
+  El cambio de fondo respecto a la version anterior es que aqui NO hay
+  pin ni escenario fijo. Es scroll nativo: el navegador ya sabe hacerlo con
+  inercia en trackpad, con el dedo en movil y con la rueda, y ademas es
+  responsive sin tener que recalcular nada. Las flechas y los puntos son
+  atajos por encima, no el mecanismo.
+*/
+@layer components {
+  .carta {
+    position: relative;
+    z-index: var(--z-content);
+    padding-block: var(--space-3xl);
+    overflow: clip;
+  }
+
+  .carta__head {
+    position: relative;
+    z-index: 2;
+    row-gap: var(--space-m);
+    margin-block-end: clamp(2.5rem, 7vh, 5rem);
+  }
+
+  .carta__mark {
+    grid-column: 1 / span 6;
+  }
+
+  .carta__title {
+    grid-column: 1 / span 8;
+    max-inline-size: 14ch;
+  }
+
+  .carta__intro {
+    grid-column: 9 / span 4;
+    max-inline-size: 34ch;
+    align-self: end;
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.75;
+    color: var(--c-cream-70);
+  }
+
+  /* --- el riel --- */
+  .gallery {
+    position: relative;
+  }
+
+  .gallery__rail {
+    display: flex;
+    gap: clamp(0.85rem, 1.6vw, 1.5rem);
+    padding: 0 var(--grid-margin);
+    margin: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    /* Sin esto el snap alinea la primera lamina con el borde del
+       contenedor y se come el margen de la pagina. */
+    scroll-padding-inline-start: var(--grid-margin);
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .gallery__rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery__rail:focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 6px;
+  }
+
+  /* Mientras se arrastra con el raton, el snap estorba: se apaga hasta soltar. */
+  .gallery[data-dragging='true'] .gallery__rail {
+    scroll-snap-type: none;
+    cursor: grabbing;
+  }
+
+  /* --- la lamina --- */
+  .plate {
+    --c-accent: var(--c-teal);
+
+    flex: 0 0 clamp(15rem, 30vw, 24rem);
+    scroll-snap-align: start;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: var(--space-m);
+  }
+
+  .plate[data-accent='coral'] {
+    --c-accent: var(--c-coral);
+  }
+
+  .plate[data-accent='mustard'] {
+    --c-accent: var(--c-mustard);
+  }
+
+  .plate[data-accent='sage'] {
+    --c-accent: var(--c-sage);
+  }
+
+  /*
+    Las esquinas redondeadas son la unica concesion: son marca de la casa de
+    este tipo de galeria y sin ellas no se reconoce el patron. Es un radio
+    propio de aqui, no un token global: el resto de la web sigue siendo de
+    esquinas vivas.
+  */
+  .plate__shot {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    margin: 0;
+    overflow: hidden;
+    border-radius: clamp(14px, 1.4vw, 22px);
+    background: #0b0c0d;
+  }
+
+  .plate__shot img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    filter: saturate(0.92) brightness(0.86);
+    transform: scale(1.02);
+    transition:
+      transform 900ms var(--ease-emphasis),
+      filter var(--dur-slow) var(--ease-standard);
+  }
+
+  /* Lavado del color del coctel por abajo. */
+  .plate__shot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 52%, color-mix(in sRGB, var(--c-accent) 20%, transparent) 100%);
+    opacity: 0;
+    transition: opacity var(--dur-slow) var(--ease-standard);
+  }
+
+  /* La lamina que esta en el centro del riel se enciende. */
+  .plate[data-focus='true'] .plate__shot img {
+    filter: saturate(1.02) brightness(1);
+    transform: scale(1);
+  }
+
+  .plate[data-focus='true'] .plate__shot::after {
+    opacity: 1;
+  }
+
+  .plate__content {
+    display: grid;
+    align-content: start;
+    gap: var(--space-2xs);
+    padding-block-start: var(--space-2xs);
+    border-block-start: 1px solid var(--line-hair);
+  }
+
+  .plate__index {
+    margin: 0;
+    font-size: 0.66rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.24em;
+    color: var(--c-accent);
+  }
+
+  .plate__name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: var(--tracking-tight);
+    color: var(--c-cream);
+    text-wrap: balance;
+  }
+
+  .plate__recipe {
+    max-inline-size: 32ch;
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.65;
+    color: var(--c-cream-70);
+  }
+
+  /* --- barra de control --- */
+  .gallery__bar {
+    align-items: center;
+    margin-block-start: clamp(1.5rem, 4vh, 2.75rem);
+    row-gap: var(--space-m);
+  }
+
+  .gallery__dots {
+    display: flex;
+    grid-column: 1 / span 8;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .gallery__dot {
+    display: grid;
+    place-items: center;
+    /* 44 px de area tactil aunque el punto se vea pequeño. */
+    inline-size: 44px;
+    block-size: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .gallery__dot-mark {
+    inline-size: 100%;
+    block-size: 2px;
+    max-inline-size: 1.75rem;
+    background: var(--line-soft);
+    transition:
+      background var(--dur-medium) var(--ease-standard),
+      max-inline-size var(--dur-medium) var(--ease-emphasis);
+  }
+
+  .gallery__dot[aria-pressed='true'] .gallery__dot-mark {
+    max-inline-size: 3rem;
+    background: var(--c-accent);
+    box-shadow: var(--glow-accent);
+  }
+
+  .gallery__dot:hover .gallery__dot-mark,
+  .gallery__dot:focus-visible .gallery__dot-mark {
+    background: var(--c-cream);
+  }
+
+  .gallery__arrows {
+    display: flex;
+    grid-column: 11 / span 2;
+    gap: 0.5rem;
+    justify-self: end;
+  }
+
+  .gallery__arrow {
+    display: grid;
+    place-items: center;
+    inline-size: 3rem;
+    block-size: 3rem;
+    border: 1px solid var(--line-soft);
+    border-radius: 50%;
+    background: rgb(245 239 229 / 4%);
+    color: var(--c-cream);
+    cursor: pointer;
+    transition:
+      background var(--dur-fast) var(--ease-standard),
+      color var(--dur-fast) var(--ease-standard),
+      border-color var(--dur-fast) var(--ease-standard),
+      opacity var(--dur-fast) var(--ease-standard);
+  }
+
+  .gallery__arrow:hover:not(:disabled),
+  .gallery__arrow:focus-visible {
+    background: var(--c-cream);
+    border-color: var(--c-cream);
+    color: var(--c-void);
+  }
+
+  .gallery__arrow:disabled {
+    opacity: 0.28;
+    cursor: default;
+  }
+
+  .carta__foot {
+    margin-block-start: clamp(2rem, 5vh, 3.5rem);
+  }
+
+  .carta__note {
+    grid-column: 1 / span 7;
+    max-inline-size: 32ch;
+    color: var(--c-mustard);
+  }
+
+  @media (max-width: 900px) {
+    .carta__mark,
+    .carta__title,
+    .carta__intro,
+    .carta__note {
+      grid-column: 1 / -1;
+    }
+
+    .carta__intro {
+      max-inline-size: 44ch;
+    }
+
+    .plate {
+      flex-basis: min(78vw, 21rem);
+    }
+
+    .gallery__dots {
+      grid-column: 1 / span 7;
+    }
+
+    .gallery__arrows {
+      grid-column: 9 / span 4;
+    }
+  }
+
+  @media (max-width: 560px) {
+    /* Deja aire al final para que la ultima lamina pueda quedar alineada
+       a la izquierda como todas las demas. */
+    .gallery__rail {
+      padding-inline-end: 22vw;
+    }
+
+    .gallery__dots {
+      display: none;
+    }
+
+    .gallery__arrows {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery__rail {
+      scroll-behavior: auto;
+    }
+
+    .plate__shot img {
+      transition-duration: 1ms;
+    }
+  }
+}

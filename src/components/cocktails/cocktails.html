@@ -1,0 +1,322 @@
+<section class="carta" id="carta" data-scene="cocktails">
+  <div class="grid carta__head">
+    <p class="scene-mark carta__mark" data-reveal>
+      <span class="scene-mark__index">04</span> <span data-i18n="cocktails_scene">la carta</span>
+    </p>
+    <h2 class="display carta__title">
+      <span class="display__mask"><span class="display__line" data-i18n="cocktails_title_1">Sis copes.</span></span>
+      <span class="display__mask">
+        <span class="display__line display__line--indent" data-i18n="cocktails_title_2">Sis maneres de començar.</span>
+      </span>
+    </h2>
+    <p class="carta__intro" data-reveal data-i18n="cocktails_intro">
+      Una selecció entre clàssics impecables i receptes de la casa. Desplaça't per descobrir-les.
+    </p>
+  </div>
+
+  <!--
+    Galeria horizontal. Scroll nativo con snap: el navegador ya sabe hacer
+    esto con inercia, con el dedo y con el trackpad, y encima es responsive
+    sin pelearse con nada. Las flechas y los puntos son atajos, no el
+    mecanismo — si JS no llega, la galeria se sigue pudiendo recorrer.
+  -->
+  <div class="gallery" data-gallery>
+    <ol
+      class="gallery__rail"
+      data-gallery-rail
+      role="list"
+      tabindex="0"
+      aria-label="Galeria de còctels"
+      data-i18n-aria-label="cocktails_stage_aria"
+    >
+      <li class="plate plate--shot" data-accent="teal" data-cocktail="mojito-meduixa">
+        <figure class="plate__shot">
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/mojito-meduixa-420.avif   420w,
+                /src/assets/photos/mojito-meduixa-700.avif   700w,
+                /src/assets/photos/mojito-meduixa-1040.avif 1040w
+              "
+            />
+            <img
+              src="/src/assets/photos/mojito-meduixa-700.webp"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/mojito-meduixa-420.webp   420w,
+                /src/assets/photos/mojito-meduixa-700.webp   700w,
+                /src/assets/photos/mojito-meduixa-1040.webp 1040w
+              "
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              data-i18n-alt="alt_mojito"
+              alt="Mojito Meduixa amb maduixa, nabius, gel picat i menta fresca"
+            />
+          </picture>
+        </figure>
+        <div class="plate__content">
+          <p class="plate__index" aria-hidden="true">01</p>
+          <h3 class="plate__name">Mojito Meduixa</h3>
+          <p class="plate__recipe" data-i18n="recipe_mojito">Vodka, suc de nabius, puré de maduixa, granadina</p>
+        </div>
+      </li>
+      <li class="plate plate--shot" data-accent="coral" data-cocktail="tiki">
+        <figure class="plate__shot">
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/tiki-420.avif   420w,
+                /src/assets/photos/tiki-700.avif   700w,
+                /src/assets/photos/tiki-1040.avif 1040w
+              "
+            />
+            <img
+              src="/src/assets/photos/tiki-700.webp"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/tiki-420.webp   420w,
+                /src/assets/photos/tiki-700.webp   700w,
+                /src/assets/photos/tiki-1040.webp 1040w
+              "
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              data-i18n-alt="alt_tiki"
+              alt="Còctel Tiki servit en un got tallat amb forma de tòtem, amb móres, llima i menta"
+            />
+          </picture>
+        </figure>
+        <div class="plate__content">
+          <p class="plate__index" aria-hidden="true">02</p>
+          <h3 class="plate__name">Tiki</h3>
+          <p class="plate__recipe" data-i18n="recipe_tiki">Ron, puré de fruites del bosc, suc de llima, sucre</p>
+        </div>
+      </li>
+      <li class="plate plate--shot" data-accent="mustard" data-cocktail="margarita">
+        <figure class="plate__shot">
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/margarita-420.avif   420w,
+                /src/assets/photos/margarita-700.avif   700w,
+                /src/assets/photos/margarita-1040.avif 1040w
+              "
+            />
+            <img
+              src="/src/assets/photos/margarita-700.webp"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/margarita-420.webp   420w,
+                /src/assets/photos/margarita-700.webp   700w,
+                /src/assets/photos/margarita-1040.webp 1040w
+              "
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              data-i18n-alt="alt_margarita"
+              alt="Margarita de mango en copa amb vora de sal i llima fresca"
+            />
+          </picture>
+        </figure>
+        <div class="plate__content">
+          <p class="plate__index" aria-hidden="true">03</p>
+          <h3 class="plate__name">Margarita</h3>
+          <p class="plate__recipe" data-i18n="recipe_margarita">Tequila, puré de mango, suc de llima, sucre</p>
+        </div>
+      </li>
+      <li class="plate plate--shot" data-accent="sage" data-cocktail="cocotro">
+        <figure class="plate__shot">
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/cocotro-420.avif   420w,
+                /src/assets/photos/cocotro-700.avif   700w,
+                /src/assets/photos/cocotro-1040.avif 1040w
+              "
+            />
+            <img
+              src="/src/assets/photos/cocotro-700.webp"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/cocotro-420.webp   420w,
+                /src/assets/photos/cocotro-700.webp   700w,
+                /src/assets/photos/cocotro-1040.webp 1040w
+              "
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              data-i18n-alt="alt_cocotro"
+              alt="Cocotro servit en copa huracà, amb un tall de pinya, coco i una cirera"
+            />
+          </picture>
+        </figure>
+        <div class="plate__content">
+          <p class="plate__index" aria-hidden="true">04</p>
+          <h3 class="plate__name">Cocotro / Cocoloco</h3>
+          <p class="plate__recipe" data-i18n="recipe_cocotro">
+            Ron, suc de pinya, suc de taronja, sirope de coco, granadina
+          </p>
+        </div>
+      </li>
+      <li class="plate plate--shot" data-accent="coral" data-cocktail="old-fashioned">
+        <figure class="plate__shot">
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/old-fashioned-420.avif   420w,
+                /src/assets/photos/old-fashioned-700.avif   700w,
+                /src/assets/photos/old-fashioned-1040.avif 1040w
+              "
+            />
+            <img
+              src="/src/assets/photos/old-fashioned-700.webp"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/old-fashioned-420.webp   420w,
+                /src/assets/photos/old-fashioned-700.webp   700w,
+                /src/assets/photos/old-fashioned-1040.webp 1040w
+              "
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              data-i18n-alt="alt_old_fashioned"
+              alt="Old Fashioned en got baix, amb un glaçó gran i una pell de taronja"
+            />
+          </picture>
+        </figure>
+        <div class="plate__content">
+          <p class="plate__index" aria-hidden="true">05</p>
+          <h3 class="plate__name">Old Fashioned</h3>
+          <p class="plate__recipe" data-i18n="recipe_old_fashioned">
+            Un clàssic, sense embolics — o potser amb un petit toc.
+          </p>
+        </div>
+      </li>
+      <li class="plate plate--shot" data-accent="teal" data-cocktail="dry-basil">
+        <figure class="plate__shot">
+          <picture>
+            <source
+              type="image/avif"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/dry-basil-420.avif   420w,
+                /src/assets/photos/dry-basil-700.avif   700w,
+                /src/assets/photos/dry-basil-1040.avif 1040w
+              "
+            />
+            <img
+              src="/src/assets/photos/dry-basil-700.webp"
+              sizes="(max-width: 1024px) 78vw, 30vw"
+              srcset="
+                /src/assets/photos/dry-basil-420.webp   420w,
+                /src/assets/photos/dry-basil-700.webp   700w,
+                /src/assets/photos/dry-basil-1040.webp 1040w
+              "
+              width="700"
+              height="875"
+              loading="lazy"
+              decoding="async"
+              data-i18n-alt="alt_dry_basil"
+              alt="Dry Basil en copa coupe, amb escuma de clara d'ou i fulles d'alfàbrega"
+            />
+          </picture>
+        </figure>
+        <div class="plate__content">
+          <p class="plate__index" aria-hidden="true">06</p>
+          <h3 class="plate__name">Dry Basil</h3>
+          <p class="plate__recipe" data-i18n="recipe_dry_basil">
+            Ginebra infusionada amb alfàbrega, suc de llima, sucre, clara d'ou
+          </p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="gallery__bar grid">
+      <ol class="gallery__dots" data-gallery-dots role="list">
+        <li>
+          <button class="gallery__dot" type="button" data-gallery-dot="0" aria-pressed="true">
+            <span class="visually-hidden">Mojito Meduixa</span>
+            <span class="gallery__dot-mark" aria-hidden="true"></span>
+          </button>
+        </li>
+        <li>
+          <button class="gallery__dot" type="button" data-gallery-dot="1" aria-pressed="false">
+            <span class="visually-hidden">Tiki</span>
+            <span class="gallery__dot-mark" aria-hidden="true"></span>
+          </button>
+        </li>
+        <li>
+          <button class="gallery__dot" type="button" data-gallery-dot="2" aria-pressed="false">
+            <span class="visually-hidden">Margarita</span>
+            <span class="gallery__dot-mark" aria-hidden="true"></span>
+          </button>
+        </li>
+        <li>
+          <button class="gallery__dot" type="button" data-gallery-dot="3" aria-pressed="false">
+            <span class="visually-hidden">Cocotro / Cocoloco</span>
+            <span class="gallery__dot-mark" aria-hidden="true"></span>
+          </button>
+        </li>
+        <li>
+          <button class="gallery__dot" type="button" data-gallery-dot="4" aria-pressed="false">
+            <span class="visually-hidden">Old Fashioned</span>
+            <span class="gallery__dot-mark" aria-hidden="true"></span>
+          </button>
+        </li>
+        <li>
+          <button class="gallery__dot" type="button" data-gallery-dot="5" aria-pressed="false">
+            <span class="visually-hidden">Dry Basil</span>
+            <span class="gallery__dot-mark" aria-hidden="true"></span>
+          </button>
+        </li>
+      </ol>
+
+      <div class="gallery__arrows">
+        <button
+          class="gallery__arrow"
+          type="button"
+          data-gallery-prev
+          aria-label="Còctel anterior"
+          data-i18n-aria-label="cocktails_previous"
+        >
+          <svg class="icon-line" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+            <path d="M12.5 4 6.5 10l6 6" />
+          </svg>
+        </button>
+        <button
+          class="gallery__arrow"
+          type="button"
+          data-gallery-next
+          aria-label="Còctel següent"
+          data-i18n-aria-label="cocktails_next"
+        >
+          <svg class="icon-line" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+            <path d="M7.5 4l6 6-6 6" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid carta__foot">
+    <p class="carta__note hand" data-reveal data-i18n="cocktails_note">
+      + torrades, assortiments, vins i cava. Demana la carta completa a taula.
+    </p>
+  </div>
+</section>

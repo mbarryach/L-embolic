@@ -1,0 +1,258 @@
+@layer components {
+  /*
+    Arranca casi invisible y sin fondo. Al bajar se encoge, aparece una
+    linea fina y el logotipo se recorta a "l'e". Nada de pastilla flotando
+    en medio, que ya la lleva medio internet.
+  */
+  .masthead {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: var(--z-header);
+    padding-block-start: 24px;
+    transition: padding-block-start var(--dur-medium) var(--ease-standard);
+  }
+
+  .masthead__bar {
+    display: flex;
+    gap: var(--space-m);
+    align-items: center;
+    padding-inline: var(--grid-margin);
+    padding-block: 1.15rem;
+    border-block-end: 1px solid transparent;
+    transition:
+      padding-block var(--dur-medium) var(--ease-standard),
+      background-color var(--dur-medium) var(--ease-standard),
+      border-color var(--dur-medium) var(--ease-standard);
+  }
+
+  .masthead[data-condensed='true'] {
+    padding-block-start: 0;
+  }
+
+  .masthead[data-condensed='true'] .masthead__bar {
+    padding-block: 0.72rem;
+    background: rgb(8 8 9 / 76%);
+    border-block-end-color: var(--line-hair);
+    backdrop-filter: blur(16px) saturate(130%);
+  }
+
+  .masthead__brand {
+    position: relative;
+    display: grid;
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .masthead__brand-full,
+  .masthead__brand-short {
+    grid-area: 1 / 1;
+    transition:
+      opacity var(--dur-medium) var(--ease-standard),
+      transform var(--dur-medium) var(--ease-standard);
+  }
+
+  .masthead__brand-short {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  .masthead[data-condensed='true'] .masthead__brand-full {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  .masthead[data-condensed='true'] .masthead__brand-short {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .masthead__nav {
+    display: flex;
+    gap: clamp(1rem, 2.5vw, 2.25rem);
+    margin-inline-start: auto;
+  }
+
+  .masthead__link {
+    font-size: 0.69rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-cream-70);
+  }
+
+  .masthead__phone {
+    font-size: 0.69rem;
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+    color: var(--c-cream-70);
+  }
+
+  .locale {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem;
+    background: rgb(245 239 229 / 4%);
+    border: 1px solid var(--line-hair);
+    backdrop-filter: blur(12px);
+  }
+
+  .locale__option {
+    min-inline-size: 2rem;
+    min-block-size: 30px;
+    padding: 0.25rem 0.42rem;
+    background: transparent;
+    border: 0;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--c-cream-30);
+    cursor: pointer;
+    transition:
+      color var(--dur-fast) var(--ease-standard),
+      background-color var(--dur-fast) var(--ease-standard);
+  }
+
+  .locale__option:hover,
+  .locale__option:focus-visible {
+    color: var(--c-cream);
+  }
+
+  .locale__option[data-active='true'] {
+    color: var(--c-void);
+    background: var(--c-cream);
+  }
+
+  /* --- boton de menu (solo movil/tablet) --- */
+  .masthead__toggle {
+    display: none;
+    gap: var(--space-2xs);
+    align-items: center;
+    min-block-size: 44px;
+    padding: 0 0.25rem;
+    margin-inline-start: auto;
+    background: none;
+    border: 0;
+    font-size: 0.69rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .masthead__toggle-bars {
+    display: grid;
+    gap: 5px;
+    inline-size: 22px;
+  }
+
+  .masthead__toggle-bars i {
+    display: block;
+    block-size: 1px;
+    background: currentColor;
+    transition: transform var(--dur-medium) var(--ease-emphasis);
+  }
+
+  .masthead__toggle[aria-expanded='true'] .masthead__toggle-bars i:first-child {
+    transform: translateY(3px) rotate(10deg);
+  }
+
+  .masthead__toggle[aria-expanded='true'] .masthead__toggle-bars i:last-child {
+    transform: translateY(-3px) rotate(-10deg);
+  }
+
+  /* --- panel desplegable --- */
+  .menu {
+    display: grid;
+    gap: var(--space-xl);
+    align-content: center;
+    min-block-size: var(--vh);
+    padding: var(--space-2xl) var(--grid-margin);
+    background: radial-gradient(circle at 80% 20%, rgb(201 169 107 / 8%), transparent 36rem), var(--c-void);
+  }
+
+  .menu[hidden] {
+    display: none;
+  }
+
+  .menu__nav {
+    display: grid;
+    gap: var(--space-s);
+  }
+
+  .menu__link {
+    display: flex;
+    gap: var(--space-s);
+    align-items: baseline;
+    padding-block: var(--space-2xs);
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 14vw, 5rem);
+    font-weight: 500;
+    line-height: 0.9;
+    text-decoration: none;
+    color: var(--c-cream);
+    transition: color var(--dur-fast) var(--ease-standard);
+  }
+
+  .menu__link:hover,
+  .menu__link:focus-visible {
+    color: var(--c-mustard);
+  }
+
+  .menu__index {
+    font-family: var(--font-body);
+    font-size: var(--fs-micro);
+    letter-spacing: var(--tracking-wide);
+    color: var(--c-cream-50);
+  }
+
+  .menu__foot {
+    display: grid;
+    gap: var(--space-2xs);
+    justify-items: start;
+    font-size: var(--fs-small);
+  }
+
+  @media (max-width: 780px) {
+    .masthead__nav,
+    .masthead__phone {
+      display: none;
+    }
+
+    .masthead__toggle {
+      display: inline-flex;
+    }
+
+    .masthead__locale {
+      margin-inline-start: auto;
+    }
+
+    .masthead[data-menu-open='true'] {
+      block-size: var(--vh);
+      overflow-y: auto;
+      background: var(--c-void);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .masthead {
+      padding-block-start: 18px;
+    }
+
+    .masthead__bar {
+      gap: 0.55rem;
+    }
+
+    .locale__option {
+      min-inline-size: 1.7rem;
+      padding-inline: 0.28rem;
+    }
+
+    .masthead__toggle {
+      margin-inline-start: 0;
+    }
+  }
+}

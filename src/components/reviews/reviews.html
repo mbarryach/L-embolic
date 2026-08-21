@@ -1,0 +1,49 @@
+<section class="reviews section" id="ressenyes" data-scene="reviews">
+  <div class="grid reviews__grid">
+    <p class="scene-mark reviews__mark" data-reveal>
+      <span class="scene-mark__index">05</span> <span data-i18n="reviews_scene">què en diuen</span>
+    </p>
+
+    <h2 class="display reviews__title">
+      <span class="display__mask"><span class="display__line" data-i18n="reviews_title_1">La millor carta</span></span>
+      <span class="display__mask"
+        ><span class="display__line display__line--indent" data-i18n="reviews_title_2"
+          >l'escriviu vosaltres.</span
+        ></span
+      >
+    </h2>
+
+    <!--
+      La nota y el numero de opiniones los mantiene el propietario en
+      src/data/social.ts y los escribe aqui JS al arrancar. No hay textos de
+      resenya copiados: para leerlas se va a Google, que es su sitio.
+    -->
+    <div class="reviews__score" data-reveal>
+      <p class="reviews__rating">
+        <span class="reviews__rating-value" data-google-rating>4,8</span>
+        <span class="reviews__rating-max" aria-hidden="true">/5</span>
+      </p>
+      <p class="reviews__stars" data-google-stars role="img" aria-label="4,8 sobre 5">★★★★★</p>
+      <p class="reviews__count">
+        <span data-google-count>96</span> <span data-i18n="reviews_count">opinions a Google</span>
+      </p>
+    </div>
+
+    <div class="reviews__action" data-reveal>
+      <p class="reviews__lead lead" data-i18n="reviews_lead">No us direm que som els millors. Us direm on mirar-ho.</p>
+      <a
+        class="btn btn--primary"
+        data-google-link
+        href="https://maps.app.goo.gl/USsDxVwN7iSmK5tMA"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-magnetic
+      >
+        <span data-i18n="reviews_cta">Llegir les ressenyes</span>
+        <svg class="btn__icon icon-line" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M3 13 13 3M6 3h7v7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

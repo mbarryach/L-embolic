@@ -1,0 +1,265 @@
+@layer components {
+  .hero {
+    position: relative;
+    z-index: var(--z-content);
+    display: flex;
+    min-block-size: var(--vh);
+    padding-block: calc(24px + var(--space-xl)) var(--space-l);
+    overflow: clip;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 18% 8% auto auto;
+    inline-size: min(32vw, 30rem);
+    aspect-ratio: 1;
+    border: 1px solid var(--line-hair);
+    border-radius: 50%;
+    opacity: 0.55;
+    box-shadow:
+      0 0 0 5rem rgb(245 239 229 / 1.2%),
+      0 0 0 10rem rgb(245 239 229 / 0.7%);
+    pointer-events: none;
+  }
+
+  /*
+    Nada de "texto a la izquierda, imagen a la derecha". El rotulo ocupa el
+    centro de la pantalla, el pie de seccion vive abajo a la izquierda y el
+    aviso de scroll se va a la esquina contraria. Todo descolocado a mano.
+
+    El flex:1 es para que la rejilla ocupe el alto que quede y reparta las
+    filas — pero si el contenido no cabe, crece y ya. Nada de recortar la
+    llamada a la accion porque alguien tenga la ventana bajita.
+  */
+  .hero__grid {
+    flex: 1;
+    align-content: space-between;
+    row-gap: var(--space-m);
+  }
+
+  .hero__mark {
+    grid-column: 1 / span 6;
+    align-self: start;
+  }
+
+  .hero__edition {
+    grid-column: 9 / span 4;
+    justify-self: end;
+    margin: 0;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--c-cream-30);
+  }
+
+  .hero__title {
+    grid-column: 1 / -1;
+    margin: 0;
+    align-self: center;
+  }
+
+  .neon {
+    inline-size: 100%;
+    block-size: auto;
+    overflow: visible;
+  }
+
+  .neon__word {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 226px;
+    font-style: italic;
+    fill: none;
+    stroke: var(--c-cream);
+    stroke-width: 1.15;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 7px rgb(118 200 196 / 62%)) drop-shadow(0 0 28px rgb(118 200 196 / 24%));
+  }
+
+  /*
+    Cada letra es un tubo independiente. El parpadeo lento solo arranca
+    cuando JS marca el rotulo como encendido: si empezase antes, pisaria
+    las opacidades de la entrada (una animacion CSS gana a un style inline)
+    y el encendido se veria a saltos.
+  */
+  .neon--lit .neon__word tspan {
+    animation: neon-breathe 9s var(--ease-standard) infinite;
+  }
+
+  .neon--lit .neon__word tspan:nth-child(2) {
+    animation-delay: -2.4s;
+  }
+
+  .neon--lit .neon__word tspan:nth-child(5) {
+    animation-delay: -5.1s;
+  }
+
+  .neon--lit .neon__word tspan:nth-child(8) {
+    animation-delay: -7.3s;
+  }
+
+  .hero__tagline {
+    grid-column: 2 / span 5;
+    margin-block-start: calc(var(--space-xl) * -1);
+    color: var(--c-mustard);
+    transform: none;
+    text-shadow: 0 0 22px rgb(201 169 107 / 22%);
+  }
+
+  .hero__doodle {
+    grid-column: 10 / span 2;
+    grid-row: 3;
+    inline-size: clamp(58px, 7vw, 96px);
+    block-size: auto;
+    justify-self: end;
+    margin-block-start: calc(var(--space-2xl) * -1);
+    fill: none;
+    stroke: var(--c-mustard);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 8px rgb(201 169 107 / 48%));
+  }
+
+  .hero__foot {
+    grid-column: 1 / span 6;
+    display: grid;
+    gap: var(--space-m);
+    align-self: end;
+  }
+
+  .hero__sub {
+    max-inline-size: 41ch;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+  }
+
+  /* --- aviso de scroll --- */
+  .scroll-cue {
+    grid-column: 11 / span 2;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    align-items: center;
+    place-self: end end;
+  }
+
+  .scroll-cue__label {
+    font-size: var(--fs-micro);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--c-cream-50);
+    writing-mode: vertical-rl;
+  }
+
+  .scroll-cue__bar {
+    inline-size: 1px;
+    block-size: clamp(40px, 7vh, 72px);
+    background: var(--c-mustard);
+    box-shadow: 0 0 8px rgb(201 169 107 / 55%);
+    animation: cue-slide 2.6s var(--ease-standard) infinite;
+  }
+
+  /* --- tablet --- */
+  @media (max-width: 900px) {
+    .hero__mark {
+      grid-column: 1 / -1;
+    }
+
+    .hero__title {
+      grid-column: 1 / -1;
+    }
+
+    .hero__edition {
+      grid-column: 7 / -1;
+    }
+
+    .hero__tagline {
+      grid-column: 1 / -1;
+      margin-block-start: calc(var(--space-m) * -1);
+    }
+
+    .hero__doodle {
+      grid-column: 10 / span 3;
+      grid-row: auto;
+      margin-block-start: 0;
+    }
+
+    .hero__foot {
+      grid-column: 1 / span 9;
+    }
+
+    .scroll-cue {
+      grid-column: 12 / span 1;
+    }
+  }
+
+  /* --- movil --- */
+  @media (max-width: 640px) {
+    .hero {
+      min-block-size: max(var(--vh), 44rem);
+      padding-block-start: calc(18px + var(--space-xl));
+    }
+
+    .hero::before {
+      inset: 24% -28% auto auto;
+      inline-size: 80vw;
+    }
+
+    .hero__edition {
+      grid-column: 5 / -1;
+      max-inline-size: 15ch;
+      text-align: end;
+    }
+
+    .hero__foot {
+      grid-column: 1 / -1;
+    }
+
+    .hero__sub {
+      max-inline-size: none;
+    }
+
+    .hero__cta .btn {
+      flex: 1 1 auto;
+      justify-content: center;
+    }
+
+    .scroll-cue {
+      display: none;
+    }
+
+    .hero__doodle {
+      justify-self: start;
+      grid-column: 1 / span 3;
+    }
+
+    .neon {
+      inline-size: 112%;
+      max-inline-size: none;
+      margin-inline-start: -6%;
+    }
+  }
+
+  /* Movil apaisado: hay poca altura, se recorta el aire para que la copa
+     y el rotulo sigan cabiendo sin scroll de mas. */
+  @media (max-height: 520px) and (orientation: landscape) {
+    .hero {
+      padding-block: calc(34px + var(--space-m)) var(--space-m);
+    }
+
+    .hero__grid {
+      row-gap: var(--space-s);
+    }
+
+    .hero__tagline {
+      margin-block-start: 0;
+    }
+  }
+}

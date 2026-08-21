@@ -1,0 +1,127 @@
+@layer components {
+  .about {
+    min-block-size: 110vh;
+    padding-block-end: calc(var(--space-3xl) + 4rem);
+    overflow: clip;
+  }
+
+  .about::after {
+    content: 'L\2019 E';
+    position: absolute;
+    inset: 10% var(--grid-margin) auto auto;
+    font-family: var(--font-display);
+    font-size: clamp(8rem, 22vw, 24rem);
+    font-style: italic;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--line-hair);
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  /*
+    Composicion propia: el titular sale por la izquierda del margen, los dos
+    parrafos no arrancan a la misma altura y la nota se cuela por encima de
+    la columna de texto. Si parece descuadrado es porque lo esta, a posta.
+  */
+  .about__grid {
+    row-gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .about__mark {
+    grid-column: 1 / span 5;
+  }
+
+  .about__title {
+    grid-column: 1 / span 10;
+    max-inline-size: 12ch;
+    margin-inline-start: clamp(-1.5rem, -1.4vw, 0rem);
+  }
+
+  .about__body {
+    grid-column: 2 / span 4;
+  }
+
+  .about__body--offset {
+    grid-column: 6 / span 4;
+    margin-block-start: clamp(3rem, 10vh, 8rem);
+  }
+
+  /* --- nota clavada --- */
+  .note {
+    --note-drift: 0rem;
+
+    grid-column: 9 / span 4;
+    grid-row: 3 / span 3;
+    position: relative;
+    align-self: start;
+    padding: clamp(2rem, 4vw, 4rem) var(--space-l);
+    margin: 0;
+    background: linear-gradient(145deg, rgb(245 239 229 / 5%), rgb(245 239 229 / 1.5%));
+    border: 1px solid var(--line-accent);
+    box-shadow: var(--shadow-lift);
+    backdrop-filter: blur(12px);
+    transform: translateY(var(--note-drift, 0));
+  }
+
+  .note__pin {
+    position: absolute;
+    inset-block-start: -4px;
+    inset-inline-start: 50%;
+    inline-size: 7px;
+    block-size: 7px;
+    border-radius: 50%;
+    background: var(--c-mustard);
+    box-shadow: 0 0 12px rgb(201 169 107 / 68%);
+    transform: translateX(-50%);
+  }
+
+  .note__quote {
+    margin: 0;
+    text-align: center;
+    color: var(--c-cream);
+    text-shadow: 0 0 18px rgb(201 169 107 / 18%);
+  }
+
+  .note__quote::before {
+    content: '“';
+  }
+
+  .note__quote::after {
+    content: '”';
+  }
+
+  .note__caption {
+    margin-block-start: var(--space-s);
+    font-size: var(--fs-micro);
+    letter-spacing: 0.08em;
+    text-align: center;
+    color: var(--c-mustard);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .about__title {
+      grid-column: 1 / -1;
+      margin-inline-start: 0;
+    }
+
+    .about__body,
+    .about__body--offset {
+      grid-column: 1 / -1;
+      margin-block-start: 0;
+    }
+
+    .note {
+      grid-column: 1 / -1;
+      grid-row: auto;
+      justify-self: center;
+      max-inline-size: 22rem;
+      margin-block-start: var(--space-m);
+    }
+
+    .about::after {
+      inset-block-start: 20%;
+    }
+  }
+}

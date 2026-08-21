@@ -1,0 +1,92 @@
+@layer components {
+  .bunting {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: calc(var(--z-header) - 1);
+    block-size: 24px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .bunting__wire {
+    position: absolute;
+    inset-block-start: 6px;
+    inset-inline: 0;
+    block-size: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-accent) 16%, var(--line-accent) 84%, transparent);
+  }
+
+  .bunting__flags {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 3vw;
+    padding-block-start: 4px;
+  }
+
+  .flag {
+    inline-size: 4px;
+    block-size: 4px;
+    flex: none;
+    border-radius: 50%;
+    transform-origin: center;
+    animation: jewel-pulse 3.8s var(--ease-standard) infinite alternate;
+  }
+
+  /* Cinco colores rotando + un pelin de desfase para que no ondeen a la vez
+     como si fueran soldados. */
+  .flag:nth-child(5n + 1) {
+    background: var(--c-mustard);
+    box-shadow: 0 0 10px rgb(201 169 107 / 65%);
+  }
+
+  .flag:nth-child(5n + 2) {
+    background: var(--c-cream-50);
+  }
+
+  .flag:nth-child(5n + 3) {
+    background: var(--c-cream-30);
+  }
+
+  .flag:nth-child(5n + 4) {
+    background: var(--c-mustard);
+  }
+
+  .flag:nth-child(5n + 5) {
+    background: var(--c-cream-50);
+  }
+
+  .flag:nth-child(odd) {
+    animation-duration: 3.1s;
+    animation-delay: -0.7s;
+  }
+
+  .flag:nth-child(3n) {
+    animation-duration: 2.7s;
+    animation-delay: -1.4s;
+  }
+
+  .flag:nth-child(4n) {
+    animation-delay: -2s;
+  }
+
+  /* Cuando la cabecera se sale de pantalla no hay nada que animar. */
+  .bunting[data-visible='false'] .flag {
+    animation-play-state: paused;
+  }
+
+  @media (max-width: 640px) {
+    .bunting {
+      block-size: 18px;
+    }
+
+    .flag {
+      inline-size: 3px;
+      block-size: 3px;
+    }
+
+    .flag:nth-child(n + 15) {
+      display: none;
+    }
+  }
+}
